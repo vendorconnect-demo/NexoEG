@@ -1,0 +1,2127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>NexoEG — Portal Oficial del Sector Hidrocarburos · Guinea Ecuatorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Inter",sans-serif;background:#F0F4F8;color:#0D1B2A;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button,input,select{font-family:"Inter",sans-serif}
+button{cursor:pointer;border:none}
+a{text-decoration:none;color:inherit}
+:root{
+  --ink:#0D1B2A;--ink2:#1A2F45;
+  --gold:#D4A843;--gold2:#E8C06A;--gold3:#FBF3DC;
+  --sig:#00C896;--sig2:#00E5AA;--sig3:#E0FBF4;
+  --mist:#F0F4F8;--white:#fff;--sl:#8CA0B5;--bdr:#D8E2ED;--bdr2:#E8EFF7;
+  --blue:#2563EB;--bp:#EFF6FF;
+  --red:#DC2626;--rp:#FEF2F2;
+  --amb:#D97706;--ap:#FFFBEB;
+  --pur:#7C3AED;--pp:#F5F3FF;
+  --sh0:0 1px 3px rgba(13,27,42,.08);
+  --sh1:0 4px 16px rgba(13,27,42,.1);
+  --sh2:0 12px 40px rgba(13,27,42,.14);
+}
+.wrap{max-width:1200px;margin:0 auto;padding:0 48px}
+.syne{font-family:"Space Grotesk",sans-serif}
+.mono{font-family:"JetBrains Mono",monospace}
+.page{display:none}.page.active{display:block}
+.dn{display:none!important}
+
+/* BADGES */
+.tag{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:99px;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
+.t-bl{background:var(--bp);color:var(--blue)}.t-gr{background:var(--sig3);color:#059669}
+.t-am{background:var(--ap);color:var(--amb)}.t-rd{background:var(--rp);color:var(--red)}
+.t-pu{background:var(--pp);color:var(--pur)}.t-gd{background:var(--gold3);color:#92620A}
+.t-ik{background:rgba(13,27,42,.08);color:var(--ink)}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:14px;font-weight:600;border-radius:8px;padding:10px 22px;transition:all .18s ease;cursor:pointer;border:none;letter-spacing:.01em}
+.btn:hover{transform:translateY(-1px)}.btn:active{transform:translateY(0)}
+.b-pr{background:var(--gold);color:var(--ink);box-shadow:0 2px 8px rgba(212,168,67,.35)}
+.b-pr:hover{background:var(--gold2)}
+.b-gd{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2)}
+.b-gd:hover{background:rgba(255,255,255,.18)}
+.b-ol{background:transparent;color:var(--ink);border:1.5px solid var(--bdr)}
+.b-ol:hover{border-color:var(--ink2);background:var(--mist)}
+.b-ik{background:var(--ink);color:#fff}.b-ik:hover{background:var(--ink2)}
+.b-si{background:var(--sig);color:var(--ink)}.b-si:hover{background:var(--sig2)}
+.b-da{background:var(--red);color:#fff}.b-da:hover{background:#B91C1C}
+.btn-sm{font-size:12px;padding:7px 14px;border-radius:7px}
+.btn-xs{font-size:11px;padding:5px 11px;border-radius:5px}
+
+/* PUBLIC NAV */
+#pnav{position:fixed;top:0;left:0;right:0;z-index:300;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(13,27,42,.6);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);transition:background .4s}
+#pnav.op{background:rgba(13,27,42,.97)}
+.nlg{display:flex;align-items:center;gap:11px;cursor:pointer}
+.nlgi{width:32px;height:32px;border-radius:8px;background:var(--gold);display:flex;align-items:center;justify-content:center}
+.nlgn{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:17px;color:#fff;letter-spacing:-.01em;line-height:1}
+.nlgs{font-size:9px;color:rgba(255,255,255,.38);letter-spacing:.12em;text-transform:uppercase;margin-top:1px}
+.pnl{display:flex;gap:2px}
+.pnlk{padding:6px 13px;border-radius:8px;font-size:13px;font-weight:500;color:rgba(255,255,255,.6);background:none;border:none;transition:all .15s}
+.pnlk:hover{color:#fff;background:rgba(255,255,255,.07)}
+.nlog{background:transparent;border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.85);border-radius:8px;padding:7px 16px;font-size:13px;font-weight:500;cursor:pointer;transition:all .15s}
+.nlog:hover{border-color:rgba(255,255,255,.5);color:#fff}
+
+/* DASH NAV */
+#dnav{display:none;position:fixed;top:0;left:0;right:0;z-index:300;height:60px;align-items:center;justify-content:space-between;background:var(--ink);border-bottom:1px solid rgba(255,255,255,.07)}
+#dnav.show{display:flex}
+.dnl{display:flex;align-items:center;height:60px}
+.dla{display:flex;align-items:center;gap:10px;padding:0 20px;height:100%;border-right:1px solid rgba(255,255,255,.07);cursor:pointer;min-width:190px}
+#dtabs{display:flex;height:100%}
+.dtab{display:flex;align-items:center;padding:0 16px;font-size:13px;font-weight:500;color:rgba(255,255,255,.5);border:none;background:transparent;cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;white-space:nowrap}
+.dtab:hover{color:rgba(255,255,255,.85);background:rgba(255,255,255,.04)}
+.dtab.on{color:#fff;border-bottom-color:var(--gold)}
+.dnr{display:flex;align-items:center;gap:12px;padding:0 20px}
+.dav{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#fff}
+.dun{font-size:13px;font-weight:600;color:#fff;line-height:1.2}
+.dur{font-size:10px;color:rgba(255,255,255,.42);margin-top:1px}
+.bex{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.6);border-radius:8px;padding:6px 14px;font-size:12px;font-weight:500;cursor:pointer;transition:all .15s}
+.bex:hover{color:#fff;background:rgba(255,255,255,.1)}
+
+/* DASH LAYOUT */
+.dl{display:flex;min-height:100vh;padding-top:60px}
+.sb{width:218px;flex-shrink:0;background:#fff;border-right:1px solid var(--bdr2);padding:16px 10px;position:sticky;top:60px;height:calc(100vh - 60px);overflow-y:auto}
+.sbg{margin-bottom:4px}
+.sbl{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sl);padding:10px 10px 4px}
+.sbi{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:8px;font-size:13px;font-weight:500;color:var(--sl);background:none;border:none;cursor:pointer;width:100%;text-align:left;transition:all .15s;position:relative}
+.sbi:hover{background:var(--mist);color:var(--ink)}
+.sbi.on{background:var(--gold3);color:var(--ink);font-weight:600}
+.sbi.on::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:20px;background:var(--gold);border-radius:0 2px 2px 0}
+.sbic{font-size:15px;width:20px;text-align:center;flex-shrink:0}
+.sbd{margin-left:auto;background:var(--red);color:#fff;font-size:10px;font-weight:700;padding:2px 7px;border-radius:99px}
+.sbda{background:var(--ap);color:var(--amb)}
+.dm{flex:1;overflow:auto;background:var(--mist)}
+.dc{padding:32px 36px;max-width:1100px}
+
+/* CARDS */
+.card{background:#fff;border:1px solid var(--bdr2);border-radius:16px;padding:24px;box-shadow:var(--sh0)}
+.ctit{font-family:"Space Grotesk",sans-serif;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:18px;display:flex;align-items:center;justify-content:space-between}
+.sg{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.sb2{background:#fff;border:1px solid var(--bdr2);border-radius:12px;padding:20px 22px;box-shadow:var(--sh0);position:relative;overflow:hidden}
+.sb2::after{content:"";position:absolute;top:0;left:0;right:0;height:3px;border-radius:4px 4px 0 0}
+.ac-gd::after{background:var(--gold)}.ac-si::after{background:var(--sig)}.ac-bl::after{background:var(--blue)}.ac-rd::after{background:var(--red)}
+.sn{font-family:"Space Grotesk",sans-serif;font-size:34px;font-weight:700;line-height:1;margin-bottom:4px}
+.sl2{font-size:12px;color:var(--sl);margin-bottom:4px}
+.ss{font-size:11px;font-weight:600}
+.ss-up{color:var(--sig)}.ss-wn{color:var(--amb)}.ss-mu{color:var(--sl)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.g3{display:grid;grid-template-columns:2fr 1fr;gap:20px}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{text-align:left;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--sl);padding:10px 14px;border-bottom:2px solid var(--bdr2);background:#FAFBFD;white-space:nowrap}
+.tbl td{padding:14px 14px;border-bottom:1px solid var(--bdr2);color:var(--ink);vertical-align:middle}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tbody tr{transition:background .1s}
+.tbl tbody tr:hover td{background:#FAFBFD}
+
+/* PROGRESS */
+.pt{height:8px;background:var(--bdr2);border-radius:99px;overflow:hidden}
+.pf{height:100%;border-radius:99px;transition:width .8s ease}
+
+/* ALERTS */
+.al{padding:12px 16px;border-radius:8px;margin-bottom:14px;font-size:13px;line-height:1.6;display:flex;align-items:flex-start;gap:10px;border:1px solid transparent}
+.al-ic{font-size:16px;flex-shrink:0;margin-top:1px}
+.al-wn{background:var(--ap);border-color:#FDE68A;color:#92400E}
+.al-ok{background:var(--sig3);border-color:#6EE7B7;color:#065F46}
+.al-in{background:var(--bp);border-color:#BFDBFE;color:#1E40AF}
+.al-da{background:var(--rp);border-color:#FECACA;color:#991B1B}
+
+/* FORM */
+.fi{width:100%;padding:10px 13px;border:1.5px solid var(--bdr);border-radius:8px;font-size:14px;color:var(--ink);background:#fff;transition:border-color .15s;outline:none}
+.fi:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,168,67,.12)}
+.flab{display:block;font-size:12px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.fg{margin-bottom:18px}
+.fgr{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+/* MODAL */
+.ov{display:none;position:fixed;inset:0;z-index:500;background:rgba(13,27,42,.6);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px}
+.ov.open{display:flex}
+.mb{background:#fff;border-radius:20px;width:100%;max-width:460px;position:relative;animation:mbi .24s cubic-bezier(.34,1.56,.64,1)}
+.mb.lg{max-width:560px;max-height:90vh;overflow-y:auto}
+@keyframes mbi{from{opacity:0;transform:scale(.94) translateY(12px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.mh{padding:32px 32px 0}.mbdy{padding:24px 32px 32px}
+.mcl{position:absolute;top:16px;right:16px;width:28px;height:28px;border-radius:50%;background:var(--mist);border:none;color:var(--sl);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;transition:all .15s}
+.mcl:hover{background:var(--bdr);color:var(--ink)}
+.mt2{font-family:"Space Grotesk",sans-serif;font-size:20px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.ms2{font-size:13px;color:var(--sl)}
+.rc{display:flex;align-items:center;gap:16px;padding:16px;border:1.5px solid var(--bdr2);border-radius:12px;margin-bottom:10px;cursor:pointer;transition:all .18s;background:#fff}
+.rc:hover{border-color:var(--gold);background:var(--gold3);transform:translateX(3px)}
+.ri{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.rn{font-weight:700;font-size:14px;color:var(--ink);line-height:1.3}
+.rd2{font-size:11px;color:var(--sl);margin-top:2px}
+.rar{margin-left:auto;color:var(--sl);font-size:18px;transition:transform .15s}
+.rc:hover .rar{color:var(--gold);transform:translateX(3px)}
+.lnk{color:var(--gold);font-weight:600;cursor:pointer;font-size:13px}
+
+/* HERO */
+#hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.hbg{position:absolute;inset:0;z-index:0;background-image:url("https://images.unsplash.com/photo-1629540946404-ebe133e99f49?w=1800&q=92&fit=crop&crop=center");background-size:cover;background-position:center center;transform:scale(1.04);filter:saturate(.7)}
+.hov{position:absolute;inset:0;z-index:1;background:linear-gradient(to right,rgba(11,29,46,.97) 0%,rgba(11,29,46,.78) 50%,rgba(11,29,46,.62) 100%)}
+.hcon{position:relative;z-index:2;padding:96px 48px 80px;max-width:1200px;margin:0 auto;width:100%}
+.tkr{display:flex;align-items:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;overflow:hidden;margin-bottom:44px;backdrop-filter:blur(4px)}
+.tkrl{background:var(--gold);color:var(--ink);font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:9px 14px;white-space:nowrap;flex-shrink:0}
+.tkrs{display:flex;flex:1;overflow:hidden}
+.tkri{display:flex;align-items:center;gap:8px;padding:9px 20px;border-left:1px solid rgba(255,255,255,.08);white-space:nowrap;font-size:12px;color:rgba(255,255,255,.75)}
+.tkrv{font-family:"JetBrains Mono",monospace;font-weight:500;color:var(--sig2);font-size:13px}
+.hdt{width:5px;height:5px;border-radius:50%;background:var(--sig);animation:blk 2s infinite;flex-shrink:0}
+@keyframes blk{0%,100%{opacity:1}50%{opacity:.3}}
+.hey{display:inline-flex;align-items:center;gap:8px;background:rgba(212,168,67,.12);border:1px solid rgba(212,168,67,.25);border-radius:99px;padding:5px 14px;margin-bottom:22px}
+.heyd{width:6px;height:6px;border-radius:50%;background:var(--sig);animation:blk 2s infinite}
+.hey span{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold2)}
+.hh1{font-family:"Space Grotesk",sans-serif;font-weight:800;font-size:clamp(36px,5.5vw,64px);color:#fff;line-height:1.04;letter-spacing:-.03em;margin-bottom:22px;text-shadow:0 2px 32px rgba(11,29,46,.6)}
+.hh1 mark{background:none;-webkit-text-stroke:0;background:linear-gradient(135deg,var(--gold),var(--sig2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hp{font-size:17px;color:rgba(255,255,255,.65);line-height:1.8;max-width:540px;margin-bottom:36px;font-weight:300}
+.hact{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:52px}
+.hst{display:grid;grid-template-columns:repeat(4,1fr);background:rgba(11,29,46,.82);border:1px solid rgba(255,255,255,.12);border-radius:16px;overflow:hidden;backdrop-filter:blur(20px) saturate(1.4);box-shadow:0 8px 32px rgba(0,0,0,.5)}
+.hsi{padding:22px 26px;border-right:1px solid rgba(255,255,255,.07);transition:background .2s}
+.hsi:hover{background:rgba(255,255,255,.05)}.hsi:last-child{border-right:none}
+.hsv{font-family:"Space Grotesk",sans-serif;font-size:30px;font-weight:700;color:var(--gold);line-height:1}
+.hsl{font-size:10px;color:rgba(255,255,255,.38);margin-bottom:7px;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+
+/* SECTIONS */
+.sec{padding:88px 0}
+.sey{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.sh2{font-family:"Space Grotesk",sans-serif;font-size:clamp(24px,3.5vw,36px);font-weight:700;color:var(--ink);line-height:1.2;letter-spacing:-.02em}
+.ssb{font-size:15px;color:var(--sl);line-height:1.75;margin-top:10px}
+.stripe{height:3px;background:linear-gradient(90deg,var(--gold),var(--sig),var(--ink))}
+
+/* PILLARS */
+.pgr{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
+.pil{background:#fff;border:1px solid var(--bdr2);border-radius:20px;padding:36px 30px;position:relative;overflow:hidden;cursor:default;transition:all .22s ease}
+.pil:hover{box-shadow:var(--sh2);transform:translateY(-5px);border-color:transparent}
+.pac{position:absolute;top:0;left:0;right:0;height:4px}
+.picw{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:22px;font-size:26px}
+.ptag{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+.pti{font-family:"Space Grotesk",sans-serif;font-size:17px;font-weight:700;color:var(--ink);margin-bottom:10px;line-height:1.3}
+.pde{font-size:13px;color:var(--sl);line-height:1.75;margin-bottom:24px}
+.plk{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;border:none;background:none;padding:0;cursor:pointer;transition:gap .15s}
+.plk:hover{gap:11px}
+
+/* STEPS */
+.stgr{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:56px;position:relative}
+.stcon{position:absolute;top:27px;left:calc(12.5% + 12px);right:calc(12.5% + 12px);height:2px;background:linear-gradient(90deg,var(--gold),var(--sig));opacity:.3;z-index:0}
+.stp{text-align:center;padding:0 20px;position:relative;z-index:1}
+.stn{width:54px;height:54px;border-radius:50%;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-family:"Space Grotesk",sans-serif;font-size:20px;font-weight:700;background:#fff;border:2px solid var(--bdr);color:var(--sl);position:relative;z-index:2;box-shadow:var(--sh0)}
+.stp.ac .stn{background:var(--gold);border-color:var(--gold);color:var(--ink);box-shadow:0 4px 16px rgba(212,168,67,.4)}
+.stit{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.stde{font-size:12px;color:var(--sl);line-height:1.65}
+
+/* LC PANEL */
+.lcv{background:var(--ink);border-radius:20px;padding:36px;position:relative;overflow:hidden}
+.lcv::before{content:"";position:absolute;top:-60px;right:-60px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(212,168,67,.15) 0%,transparent 70%)}
+.lcv::after{content:"";position:absolute;bottom:-40px;left:-40px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(0,200,150,.08) 0%,transparent 70%)}
+.lcr{display:flex;align-items:center;gap:12px;margin-bottom:14px;position:relative;z-index:1}
+.lcn{font-size:12px;font-weight:600;color:rgba(255,255,255,.6);width:90px;flex-shrink:0}
+.lct{flex:1;height:6px;background:rgba(255,255,255,.08);border-radius:99px}
+.lcf{height:100%;border-radius:99px}
+.lcp{font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:500;width:38px;text-align:right;flex-shrink:0}
+.lcb{font-size:9px;font-weight:700;padding:2px 8px;border-radius:99px;flex-shrink:0;text-transform:uppercase;letter-spacing:.04em}
+.lok{background:rgba(0,200,150,.18);color:#4ADE80}
+.lwn{background:rgba(212,168,67,.18);color:#FCD34D}
+.lbd{background:rgba(220,38,38,.18);color:#FCA5A5}
+
+/* TENDERS */
+.tgr{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.tc{background:#fff;border:1px solid var(--bdr2);border-radius:16px;padding:24px;transition:all .2s ease;cursor:default}
+.tc:hover{box-shadow:var(--sh1);border-color:var(--bdr);transform:translateY(-2px)}
+.tth{font-family:"Space Grotesk",sans-serif;font-size:15px;font-weight:700;color:var(--ink);line-height:1.35;margin-bottom:8px}
+.tme{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--sl);margin-bottom:10px}
+.tde{font-size:13px;color:var(--sl);line-height:1.65;margin-bottom:18px}
+.tfo{display:flex;align-items:center;gap:10px}
+.lpf{display:inline-flex;align-items:center;gap:5px;background:var(--sig3);color:#059669;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:3px 10px;border-radius:99px}
+
+/* NEWS */
+.ngr{display:grid;grid-template-columns:2fr 1fr;gap:40px;margin-top:40px}
+.nit{padding:20px 0;border-bottom:1px solid var(--bdr2);display:flex;flex-direction:column;gap:8px}
+.nit:last-child{border-bottom:none}
+.nti{font-size:14px;font-weight:600;color:var(--ink);line-height:1.55}
+.ndt{font-size:11px;color:var(--sl);font-family:"JetBrains Mono",monospace}
+.sw{background:#fff;border:1px solid var(--bdr2);border-radius:16px;padding:22px;margin-bottom:18px;box-shadow:var(--sh0)}
+.swt{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sl);margin-bottom:16px}
+.swr{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--bdr2);font-size:12px}
+.swr:last-child{border-bottom:none}
+.swv{font-weight:700;color:var(--ink);font-family:"JetBrains Mono",monospace}
+
+/* CTA */
+#cta{position:relative;padding:100px 48px;text-align:center;overflow:hidden;background:var(--ink)}
+.cbg{position:absolute;inset:0;background-image:url("https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1600&q=70&fit=crop");background-size:cover;background-position:center;opacity:.08;filter:saturate(0.3)}
+.cc{position:relative;z-index:1}
+.ch2{font-family:"Space Grotesk",sans-serif;font-size:clamp(28px,4vw,48px);font-weight:700;color:#fff;letter-spacing:-.025em;margin-bottom:14px;line-height:1.1}
+.ch2 mark{background:linear-gradient(135deg,var(--gold),var(--sig2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cp2{font-size:16px;color:rgba(255,255,255,.48);max-width:480px;margin:0 auto 40px;line-height:1.75;font-weight:300}
+
+/* FOOTER */
+footer{background:#080F1A;padding:56px 48px 36px}
+.ftgr{display:grid;grid-template-columns:2.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.ftd{font-size:13px;color:rgba(255,255,255,.3);line-height:1.75;margin-top:16px;max-width:260px;font-weight:300}
+.ftct{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:18px}
+.ftco a{display:block;font-size:13px;color:rgba(255,255,255,.45);margin-bottom:10px;transition:color .15s;font-weight:300}
+.ftco a:hover{color:var(--gold)}
+.ftbo{border-top:1px solid rgba(255,255,255,.06);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.ftcp{font-size:12px;color:rgba(255,255,255,.22);font-family:"JetBrains Mono",monospace}
+.ftlg{display:flex;gap:22px}
+.ftlg a{font-size:12px;color:rgba(255,255,255,.22);transition:color .15s}
+.ftlg a:hover{color:rgba(255,255,255,.6)}
+
+/* DASH SPECIFICS */
+.ph{margin-bottom:28px}
+.phl{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.pht{font-family:"Space Grotesk",sans-serif;font-size:24px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+.phs{font-size:13px;color:var(--sl);margin-top:4px}
+.qa{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.ac{background:#fff;border:1px solid var(--bdr2);border-radius:12px;padding:20px;box-shadow:var(--sh0);transition:box-shadow .15s}
+.ac:hover{box-shadow:var(--sh1)}
+.dgr{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}
+.dgi{background:var(--mist);border-radius:8px;padding:9px 12px;font-size:12px;display:flex;align-items:center;gap:6px}
+.lcir{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--bdr2)}
+.lcir:last-child{border-bottom:none}
+.lcin{font-size:12px;font-weight:600;color:var(--ink);width:100px;flex-shrink:0}
+.tpb{display:flex;gap:4px;background:var(--mist);border-radius:8px;padding:3px;margin-bottom:20px;width:fit-content}
+.tpp{padding:7px 18px;border-radius:8px;border:none;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;color:var(--sl);background:transparent}
+.tpp.on{background:#fff;color:var(--ink);box-shadow:var(--sh0)}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.rv.in{opacity:1;transform:none}
+
+@media(max-width:1024px){.pgr,.stgr{grid-template-columns:repeat(2,1fr)}.stcon{display:none}.ftgr{grid-template-columns:1fr 1fr}.g2,.g3,.ngr{grid-template-columns:1fr}.tgr{grid-template-columns:1fr}.sg{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.wrap,.dc{padding:0 20px}.hcon{padding-left:20px;padding-right:20px}.pnl,.dtabs,.sb{display:none}.hst{grid-template-columns:repeat(2,1fr)}.pgr{grid-template-columns:1fr}.ftgr{grid-template-columns:1fr}}
+
+/* ── TERMINAL PANEL ── */
+.terminal{background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.14);border-radius:12px;margin-bottom:48px;overflow:hidden;backdrop-filter:blur(14px);box-shadow:0 4px 32px rgba(0,0,0,.5)}
+.term-bar{display:flex;align-items:center;justify-content:space-between;padding:9px 16px;background:rgba(0,0,0,.4);border-bottom:1px solid rgba(255,255,255,.07)}
+.term-dots{display:flex;gap:6px;align-items:center}
+.term-dot{width:10px;height:10px;border-radius:50%}
+.term-title{font-family:"JetBrains Mono",monospace;font-size:10px;color:rgba(255,255,255,.45);letter-spacing:.1em;text-transform:uppercase}
+.term-live{display:flex;align-items:center;gap:6px;font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--gas);font-weight:500}
+.term-live-dot{width:6px;height:6px;border-radius:50%;background:var(--gas);animation:blink 1.8s infinite}
+.term-grid{display:grid;grid-template-columns:repeat(5,1fr)}
+.term-cell{padding:16px 20px;border-right:1px solid rgba(255,255,255,.06)}
+.term-cell:last-child{border-right:none}
+.term-label{font-family:"JetBrains Mono",monospace;font-size:9px;color:rgba(255,255,255,.42);letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px;font-weight:500}
+.term-value{font-family:"JetBrains Mono",monospace;font-size:22px;font-weight:500;color:#fff;line-height:1;letter-spacing:-.02em}
+.term-change{font-family:"JetBrains Mono",monospace;font-size:10px;margin-top:5px}
+.tc-up{color:var(--gas)}.tc-dn{color:#F87171}.tc-nu{color:rgba(255,255,255,.35)}
+
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes blk{0%,100%{opacity:1}50%{opacity:.3}}
+/* ═══════════════════════════════════════
+   NEXOEG v4 — Design System Additions
+   Engineer: Senior Frontend Architect
+   Standard: WCAG 2.1 AA, ISO/IEC 25010
+═══════════════════════════════════════ */
+
+/* ── v4 TOKENS ── */
+:root {
+  /* Semantic colors */
+  --success:   #059669;
+  --warning:   #D97706;
+  --danger:    #DC2626;
+  --info:      #2563EB;
+  /* Elevation */
+  --el1: 0 1px 3px rgba(11,29,46,.06), 0 1px 2px rgba(11,29,46,.04);
+  --el2: 0 4px 12px rgba(11,29,46,.08), 0 2px 4px rgba(11,29,46,.06);
+  --el3: 0 8px 24px rgba(11,29,46,.12), 0 4px 8px rgba(11,29,46,.08);
+  --el4: 0 20px 48px rgba(11,29,46,.18), 0 8px 16px rgba(11,29,46,.1);
+  /* Animation */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  /* NEXO Brain */
+  --brain-primary: #6366F1;
+  --brain-glow: rgba(99,102,241,.25);
+  --brain-bg: #1E1B4B;
+}
+
+/* ── TOAST NOTIFICATIONS ── */
+#toast-container {
+  position: fixed; bottom: 24px; right: 24px;
+  z-index: 9000; display: flex; flex-direction: column; gap: 10px;
+  pointer-events: none;
+}
+.toast {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--ink); color: #fff;
+  padding: 14px 18px; border-radius: 12px;
+  font-size: 13px; font-weight: 500; max-width: 340px;
+  box-shadow: var(--el4); pointer-events: all;
+  animation: toast-in .3s var(--ease-spring);
+  border-left: 3px solid var(--gas);
+}
+.toast.warn { border-left-color: var(--gold); }
+.toast.err  { border-left-color: var(--red); }
+.toast.info { border-left-color: var(--blue); }
+@keyframes toast-in {
+  from { opacity:0; transform: translateX(20px) scale(.96); }
+  to   { opacity:1; transform: none; }
+}
+.toast-icon { font-size: 16px; flex-shrink: 0; }
+.toast-close {
+  margin-left: auto; background: none; border: none;
+  color: rgba(255,255,255,.4); cursor: pointer; font-size: 16px;
+  padding: 2px; flex-shrink: 0;
+}
+.toast-close:hover { color: #fff; }
+
+/* ── NEXO BRAIN WIDGET ── */
+#brain-btn {
+  position: fixed; bottom: 24px; left: 24px; z-index: 8000;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: linear-gradient(135deg, #6366F1, #8B5CF6);
+  border: none; cursor: pointer;
+  box-shadow: 0 4px 20px var(--brain-glow), var(--el3);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform .2s var(--ease-spring), box-shadow .2s;
+  animation: brain-pulse 3s ease-in-out infinite;
+}
+#brain-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 28px rgba(99,102,241,.45), var(--el4);
+}
+@keyframes brain-pulse {
+  0%,100% { box-shadow: 0 4px 20px var(--brain-glow), var(--el3); }
+  50%      { box-shadow: 0 4px 32px rgba(99,102,241,.4), var(--el3); }
+}
+.brain-icon { font-size: 24px; }
+.brain-dot {
+  position: absolute; top: 4px; right: 4px;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--gas); border: 2px solid #fff;
+  animation: blink 2s infinite;
+}
+
+#brain-panel {
+  position: fixed; bottom: 90px; left: 24px; z-index: 8000;
+  width: 380px; background: #fff;
+  border-radius: 20px; box-shadow: var(--el4);
+  border: 1px solid var(--border2);
+  display: none; flex-direction: column; overflow: hidden;
+  animation: brain-open .28s var(--ease-spring);
+  max-height: 520px;
+}
+#brain-panel.open { display: flex; }
+@keyframes brain-open {
+  from { opacity:0; transform: translateY(16px) scale(.96); }
+  to   { opacity:1; transform: none; }
+}
+.brain-header {
+  display: flex; align-items: center; gap: 12px;
+  padding: 16px 18px; background: var(--brain-bg);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  flex-shrink: 0;
+}
+.brain-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: linear-gradient(135deg, #6366F1, #8B5CF6);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.brain-name { font-weight: 700; font-size: 14px; color: #fff; line-height: 1.2; }
+.brain-sub  { font-size: 10px; color: rgba(255,255,255,.45); margin-top: 1px; }
+.brain-status {
+  margin-left: auto; display: flex; align-items: center; gap: 5px;
+  font-size: 10px; color: var(--gas); font-family: 'JetBrains Mono', monospace;
+}
+.brain-status-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--gas); animation: blink 2s infinite;
+}
+.brain-close-btn {
+  background: rgba(255,255,255,.08); border: none;
+  color: rgba(255,255,255,.5); border-radius: 6px;
+  width: 26px; height: 26px; cursor: pointer; font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .15s;
+}
+.brain-close-btn:hover { background: rgba(255,255,255,.18); color: #fff; }
+
+.brain-msgs {
+  flex: 1; overflow-y: auto; padding: 16px;
+  display: flex; flex-direction: column; gap: 12px;
+  background: #FAFBFF;
+}
+.msg { display: flex; gap: 10px; align-items: flex-start; }
+.msg.user { flex-direction: row-reverse; }
+.msg-avatar {
+  width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 13px;
+}
+.msg.ai   .msg-avatar { background: linear-gradient(135deg,#6366F1,#8B5CF6); }
+.msg.user .msg-avatar { background: var(--gold); color: var(--ink); font-weight: 700; font-size: 11px; }
+.msg-bubble {
+  max-width: 260px; padding: 10px 14px;
+  border-radius: 14px; font-size: 13px; line-height: 1.6;
+}
+.msg.ai   .msg-bubble { background: #fff; color: var(--ink); border: 1px solid var(--border2); border-radius: 4px 14px 14px 14px; }
+.msg.user .msg-bubble { background: var(--ink); color: #fff; border-radius: 14px 4px 14px 14px; }
+.msg-time { font-size: 10px; color: var(--slate); margin-top: 4px; font-family: 'JetBrains Mono', monospace; }
+
+.brain-chips {
+  padding: 10px 16px; display: flex; flex-wrap: wrap; gap: 6px;
+  border-top: 1px solid var(--border2); background: #fff; flex-shrink: 0;
+}
+.brain-chip {
+  padding: 5px 12px; background: var(--mist); border: 1px solid var(--border2);
+  border-radius: 99px; font-size: 11px; font-weight: 500; color: var(--ink);
+  cursor: pointer; transition: all .15s; white-space: nowrap;
+}
+.brain-chip:hover { background: var(--brain-primary); color: #fff; border-color: var(--brain-primary); }
+
+.brain-input-row {
+  display: flex; gap: 8px; padding: 12px 16px;
+  border-top: 1px solid var(--border2); background: #fff; flex-shrink: 0;
+}
+.brain-input {
+  flex: 1; border: 1.5px solid var(--border); border-radius: 10px;
+  padding: 9px 13px; font-size: 13px; font-family: 'Inter', sans-serif;
+  outline: none; transition: border-color .15s; background: var(--mist);
+}
+.brain-input:focus { border-color: var(--brain-primary); background: #fff; }
+.brain-send {
+  width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0;
+  background: var(--brain-primary); color: #fff; border: none;
+  cursor: pointer; font-size: 16px; display: flex;
+  align-items: center; justify-content: center; transition: all .18s;
+}
+.brain-send:hover { background: #4F46E5; transform: scale(1.05); }
+.brain-thinking {
+  display: flex; align-items: center; gap: 6px;
+  padding: 10px 14px; background: #fff; border: 1px solid var(--border2);
+  border-radius: 4px 14px 14px 14px; width: fit-content;
+}
+.brain-thinking span { width: 6px; height: 6px; border-radius: 50%; background: var(--brain-primary); animation: think .8s ease-in-out infinite; }
+.brain-thinking span:nth-child(2) { animation-delay: .15s; }
+.brain-thinking span:nth-child(3) { animation-delay: .3s; }
+@keyframes think { 0%,80%,100%{transform:scale(.8);opacity:.5} 40%{transform:scale(1.1);opacity:1} }
+
+/* ── SVG CHARTS ── */
+.chart-wrap { position: relative; width: 100%; }
+.chart-axis { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: var(--slate); }
+.chart-line { fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.chart-area { opacity: .12; }
+.chart-dot  { r: 4; stroke: #fff; stroke-width: 2; }
+.chart-tooltip {
+  position: absolute; background: var(--ink); color: #fff;
+  padding: 8px 12px; border-radius: 8px; font-size: 12px;
+  pointer-events: none; opacity: 0; transition: opacity .15s;
+  white-space: nowrap; z-index: 10;
+  font-family: 'JetBrains Mono', monospace;
+}
+.chart-legend {
+  display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 8px;
+}
+.chart-legend-item {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; color: var(--slate); font-weight: 500;
+}
+.chart-legend-dot {
+  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+}
+.chart-label {
+  font-size: 10px; font-family: 'JetBrains Mono', monospace;
+  fill: var(--slate);
+}
+.bar-rect { transition: opacity .15s; }
+.bar-rect:hover { opacity: .75; }
+
+/* ── WORKFLOW STATUS TRACKER ── */
+.workflow-track {
+  display: flex; align-items: center; gap: 0;
+  margin-bottom: 20px; position: relative;
+}
+.wf-step {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 6px; flex: 1; position: relative; z-index: 1;
+}
+.wf-node {
+  width: 32px; height: 32px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; border: 2px solid var(--border);
+  background: #fff; color: var(--slate); font-family: 'JetBrains Mono', monospace;
+  transition: all .3s;
+}
+.wf-node.done  { background: var(--gas);  border-color: var(--gas);  color: var(--ink); }
+.wf-node.active{ background: var(--gold); border-color: var(--gold); color: var(--ink); }
+.wf-node.warn  { background: var(--red);  border-color: var(--red);  color: #fff; }
+.wf-label { font-size: 10px; color: var(--slate); text-align: center; font-weight: 500; letter-spacing: .04em; }
+.wf-label.done  { color: var(--success); font-weight: 600; }
+.wf-label.active{ color: var(--amber);  font-weight: 700; }
+.wf-connector {
+  position: absolute; top: 15px; left: calc(50% + 16px);
+  right: calc(-50% + 16px); height: 2px; background: var(--border2); z-index: 0;
+}
+.wf-connector.done { background: var(--gas); }
+
+/* ── VENDOR SCORE CALCULATOR ── */
+.score-dial {
+  position: relative; width: 120px; height: 120px;
+  flex-shrink: 0; margin: 0 auto;
+}
+.score-svg { width: 120px; height: 120px; transform: rotate(-90deg); }
+.score-track { fill: none; stroke: var(--border2); stroke-width: 8; }
+.score-fill  {
+  fill: none; stroke-width: 8; stroke-linecap: round;
+  stroke-dasharray: 283; transition: stroke-dashoffset 1.2s var(--ease-out);
+}
+.score-text {
+  position: absolute; inset: 0; display: flex;
+  flex-direction: column; align-items: center; justify-content: center;
+}
+.score-num { font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700; line-height: 1; }
+.score-lbl { font-size: 9px; color: var(--slate); margin-top: 2px; letter-spacing: .08em; }
+
+/* ── COMPARISON TABLE (IOC) ── */
+.comp-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.comp-table th { padding: 10px 14px; background: var(--ink); color: rgba(255,255,255,.7); font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; text-align: center; }
+.comp-table th:first-child { text-align: left; background: var(--ink2); }
+.comp-table td { padding: 13px 14px; border-bottom: 1px solid var(--border2); text-align: center; vertical-align: middle; }
+.comp-table td:first-child { text-align: left; font-weight: 600; background: #FAFBFD; }
+.comp-table tr:last-child td { border-bottom: none; }
+.comp-table tr:hover td { background: var(--mist); }
+.comp-table tr:hover td:first-child { background: var(--mist); }
+.comp-best { background: rgba(31,207,161,.1); color: var(--success); font-weight: 700; border-radius: 4px; padding: 3px 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+.comp-ok   { color: var(--ink); font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+.comp-warn { color: var(--amber); font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+
+/* ── EG RONDA 2026 MODULE ── */
+.ronda-card {
+  background: linear-gradient(135deg, var(--ink) 0%, #0F2A3F 100%);
+  border-radius: 16px; padding: 28px; position: relative; overflow: hidden;
+}
+.ronda-card::before {
+  content: ''; position: absolute; top: -60px; right: -60px;
+  width: 240px; height: 240px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,149,42,.12) 0%, transparent 70%);
+}
+.ronda-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(200,149,42,.15); border: 1px solid rgba(200,149,42,.25); border-radius: 99px; padding: 4px 12px; margin-bottom: 14px; }
+.ronda-tag span { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
+.ronda-title { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; color: #fff; letter-spacing: -.015em; margin-bottom: 8px; }
+.ronda-sub { font-size: 13px; color: rgba(255,255,255,.5); line-height: 1.65; margin-bottom: 22px; }
+.ronda-blocks { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
+.ronda-block { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); border-radius: 10px; padding: 14px; cursor: pointer; transition: all .2s; }
+.ronda-block:hover { background: rgba(255,255,255,.1); border-color: var(--gold); }
+.rb-name { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500; color: var(--gold); margin-bottom: 4px; }
+.rb-type { font-size: 11px; color: rgba(255,255,255,.45); }
+.rb-area { font-size: 10px; color: rgba(255,255,255,.3); margin-top: 4px; }
+
+/* ── SECTOR INTEL FEED ── */
+.intel-item {
+  display: flex; gap: 12px; padding: 14px 0;
+  border-bottom: 1px solid var(--border2);
+}
+.intel-item:last-child { border-bottom: none; }
+.intel-badge { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.intel-title { font-size: 13px; font-weight: 600; color: var(--ink); line-height: 1.45; margin-bottom: 4px; }
+.intel-meta  { font-size: 11px; color: var(--slate); font-family: 'JetBrains Mono', monospace; }
+.intel-action { font-size: 11px; font-weight: 600; color: var(--brain-primary); cursor: pointer; margin-top: 4px; display: inline-block; }
+
+/* ── KPI COUNTER ANIMATION ── */
+.kpi-counter { font-variant-numeric: tabular-nums; }
+
+/* ── NOTIFICATION BADGE ── */
+.notif-badge {
+  position: absolute; top: -4px; right: -4px;
+  background: var(--red); color: #fff;
+  width: 16px; height: 16px; border-radius: 50%;
+  font-size: 9px; font-weight: 700; display: flex;
+  align-items: center; justify-content: center;
+  border: 2px solid #fff;
+}
+
+/* ── TIMELINE ── */
+.timeline { position: relative; padding-left: 28px; }
+.timeline::before { content: ''; position: absolute; left: 8px; top: 4px; bottom: 4px; width: 2px; background: var(--border2); }
+.tl-item { position: relative; padding-bottom: 20px; }
+.tl-item:last-child { padding-bottom: 0; }
+.tl-dot { position: absolute; left: -24px; top: 2px; width: 14px; height: 14px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 2px var(--border2); z-index: 1; }
+.tl-dot.done  { background: var(--gas);  box-shadow: 0 0 0 2px rgba(31,207,161,.25); }
+.tl-dot.now   { background: var(--gold); box-shadow: 0 0 0 3px rgba(200,149,42,.3); animation: pulse-dot 2s infinite; }
+.tl-dot.next  { background: var(--border2); }
+@keyframes pulse-dot { 0%,100%{box-shadow:0 0 0 3px rgba(200,149,42,.3)} 50%{box-shadow:0 0 0 6px rgba(200,149,42,.12)} }
+.tl-date { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--slate); margin-bottom: 3px; }
+.tl-title { font-size: 13px; font-weight: 600; color: var(--ink); }
+.tl-desc  { font-size: 12px; color: var(--slate); margin-top: 2px; line-height: 1.55; }
+
+/* ── v4 DASHBOARD HEADER ── */
+.ph-v4 {
+  display: flex; justify-content: space-between;
+  align-items: flex-start; margin-bottom: 24px;
+  padding-bottom: 20px; border-bottom: 1px solid var(--border2);
+}
+.ph-v4-left .phl { margin-bottom: 4px; }
+.ph-v4-actions { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+
+/* ── SKELETON LOADER ── */
+.skel { background: linear-gradient(90deg, var(--border2) 25%, #E8EFF5 50%, var(--border2) 75%); background-size: 200%; border-radius: 6px; animation: skel-anim 1.4s ease-in-out infinite; }
+@keyframes skel-anim { 0%{background-position:200%} 100%{background-position:-200%} }
+
+/* ── RESPONSIVE v4 ── */
+@media (max-width: 768px) {
+  #brain-panel { left: 12px; right: 12px; width: auto; bottom: 84px; }
+  #brain-btn   { bottom: 20px; left: 20px; }
+  #toast-container { left: 12px; right: 12px; bottom: 20px; }
+}
+
+</style>
+<!-- PUBLIC NAV -->
+<nav id="pnav">
+  <div class="nlg" onclick="goHome()">
+    <div class="nlgi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D1B2A" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+    <div><div class="nlgn">NexoEG <span style="font-size:10px;font-weight:500;color:var(--gold);background:rgba(200,149,42,.15);border-radius:4px;padding:1px 6px;letter-spacing:.05em">v4</span></div><div class="nlgs">Sector Hidrocarburos · GE</div></div>
+  </div>
+  <div class="pnl">
+    <button class="pnlk" onclick="sScr('pillars')">Plataforma</button>
+    <button class="pnlk" onclick="sScr('tpub')">Licitaciones</button>
+    <button class="pnlk" onclick="sScr('lcsec')">Contenido Local</button>
+    <button class="pnlk" onclick="sScr('nsec')">Sector</button>
+    <button class="pnlk" onclick="sScr('cta')">Contacto</button>
+  </div>
+  <div class="nact">
+    <button class="nlog" onclick="openOv('ov-login')">Iniciar sesión</button>
+    <button class="btn b-pr btn-sm" onclick="openOv('ov-reg')">Registrar empresa</button>
+  </div>
+</nav>
+
+<!-- DASH NAV -->
+<nav id="dnav">
+  <div class="dnl">
+    <div class="dla" onclick="goHome()">
+      <div class="nlgi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0D1B2A" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+      <div style="margin-left:8px"><div class="nlgn" style="font-size:15px">NexoEG</div></div>
+    </div>
+    <div id="dtabs"></div>
+  </div>
+  <div class="dnr">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div style="position:relative">
+        <div class="dav" id="dav"></div>
+        <div class="notif-badge" id="notif-count" style="display:none">3</div>
+      </div>
+      <div><div class="dun" id="dun"></div><div class="dur" id="dur"></div></div>
+    </div>
+    <button class="btn b-ol b-sm" style="color:rgba(255,255,255,.6);border-color:rgba(255,255,255,.15)" onclick="toggleBrain()">🧠 NEXO Brain</button>
+    <button class="bex" onclick="goHome()">← Salir</button>
+  </div>
+</nav>
+
+<!-- TOAST CONTAINER -->
+<div id="toast-container"></div>
+
+<!-- NEXO BRAIN BUTTON -->
+<button id="brain-btn" onclick="toggleBrain()" title="NEXO Brain — Asistente IA del sector">
+  <span class="brain-icon">🧠</span>
+  <div class="brain-dot"></div>
+</button>
+
+<!-- NEXO BRAIN PANEL -->
+<div id="brain-panel">
+  <div class="brain-header">
+    <div class="brain-avatar">🧠</div>
+    <div>
+      <div class="brain-name">NEXO Brain</div>
+      <div class="brain-sub">Asistente IA del Sector Hidrocarburos · GE</div>
+    </div>
+    <div class="brain-status"><div class="brain-status-dot"></div>Activo</div>
+    <button class="brain-close-btn" onclick="toggleBrain()">✕</button>
+  </div>
+  <div class="brain-msgs" id="brain-msgs">
+    <div class="msg ai">
+      <div class="msg-avatar">🧠</div>
+      <div>
+        <div class="msg-bubble">Hola. Soy NEXO Brain, el asistente de inteligencia sectorial de NexoEG. Puedo responderte preguntas sobre proveedores, licitaciones, cumplimiento de contenido local, bloques activos y regulación. ¿En qué puedo ayudarte?</div>
+        <div class="msg-time">Ahora mismo</div>
+      </div>
+    </div>
+  </div>
+  <div class="brain-chips" id="brain-chips">
+    <div class="brain-chip" onclick="askBrain('¿Qué proveedores de logística tienen score mayor a 85?')">Proveedores logística score 85+</div>
+    <div class="brain-chip" onclick="askBrain('¿Qué operadoras están por debajo del 60% de LC?')">Operadoras con alerta LC</div>
+    <div class="brain-chip" onclick="askBrain('¿Cuándo es el cierre de la licitación de Chevron más próxima?')">Próximos cierres de licitaciones</div>
+    <div class="brain-chip" onclick="askBrain('Resume el estado de cumplimiento HSE del sector')">Estado HSE del sector</div>
+  </div>
+  <div class="brain-input-row">
+    <input class="brain-input" id="brain-input" placeholder="Pregunta sobre el sector..." onkeydown="if(event.key==='Enter')sendBrain()"/>
+    <button class="brain-send" onclick="sendBrain()">↑</button>
+  </div>
+</div>
+
+<!-- HOME PAGE -->
+<div id="pg-home" class="page active">
+<section id="hero">
+  <div class="hbg"></div><div class="hov"></div><div style="position:absolute;bottom:0;left:0;right:0;height:180px;background:linear-gradient(to top,var(--mist) 0%,transparent 100%);z-index:2;pointer-events:none"></div>
+  <div class="hcon">
+    <div class="terminal">
+      <div class="term-bar">
+        <div class="term-dots">
+          <div class="term-dot" style="background:#FF5F57"></div>
+          <div class="term-dot" style="background:#FEBC2E"></div>
+          <div class="term-dot" style="background:#28C840"></div>
+        </div>
+        <div class="term-title">NEXOEG MARKET DATA — SECTOR HIDROCARBUROS · GUINEA ECUATORIAL</div>
+        <div class="term-live"><div class="term-live-dot"></div>LIVE</div>
+      </div>
+      <div class="term-grid">
+        <div class="term-cell">
+          <div class="term-label">Licitaciones activas</div>
+          <div class="term-value">43</div>
+          <div class="term-change tc-up">↑ +7 este mes</div>
+        </div>
+        <div class="term-cell">
+          <div class="term-label">LC promedio sector</div>
+          <div class="term-value">62%</div>
+          <div class="term-change tc-up">↑ Meta: 60%</div>
+        </div>
+        <div class="term-cell">
+          <div class="term-label">Proveedores calificados</div>
+          <div class="term-value">127</div>
+          <div class="term-change tc-up">↑ +14 este mes</div>
+        </div>
+        <div class="term-cell">
+          <div class="term-label">Operadoras conectadas</div>
+          <div class="term-value">6</div>
+          <div class="term-change tc-nu">IOCs activas</div>
+        </div>
+        <div class="term-cell">
+          <div class="term-label">Alerta — Trident Energy</div>
+          <div class="term-value" style="color:#F87171">54%</div>
+          <div class="term-change tc-dn">↓ Bajo umbral LC</div>
+        </div>
+      </div>
+    </div>
+    <div class="hey"><div class="heyd"></div><span>Plataforma oficial · República de Guinea Ecuatorial</span></div>
+    <h1 class="hh1">El sector energético<br>de Guinea Ecuatorial,<br><mark>conectado en un solo lugar</mark></h1>
+    <p class="hp">NexoEG integra al Ministerio de Minas, las operadoras petroleras y los proveedores de servicios en una sola plataforma de cumplimiento, contratación y contenido local.</p>
+    <div class="hact">
+      <button class="btn b-pr" onclick="openOv('ov-login')">Iniciar sesión <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <button class="btn b-gd" onclick="openOv('ov-reg')">Registrar empresa</button>
+    </div>
+    <div class="hst">
+      <div class="hsi">
+        <div class="hsl">Proveedores registrados</div>
+        <div class="hsv">127</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gas);margin-top:5px;display:flex;align-items:center;gap:4px"><span>↑</span><span>+14 este mes</span></div>
+      </div>
+      <div class="hsi">
+        <div class="hsl">Licitaciones activas</div>
+        <div class="hsv">43</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gas);margin-top:5px;display:flex;align-items:center;gap:4px"><span>↑</span><span>+7 esta semana</span></div>
+      </div>
+      <div class="hsi">
+        <div class="hsl">Operadoras conectadas</div>
+        <div class="hsv">6</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.3);margin-top:5px">Chevron · GEPetrol · Eni…</div>
+      </div>
+      <div class="hsi">
+        <div class="hsl">LC promedio del sector</div>
+        <div class="hsv" style="color:var(--gas)">62%</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--gas);margin-top:5px;display:flex;align-items:center;gap:4px"><span>✓</span><span>Meta 60% alcanzada</span></div>
+      </div>
+    </div>
+  </div>
+  <div style="position:absolute;bottom:16px;right:20px;z-index:2;font-size:10px;color:rgba(255,255,255,.18);font-family:'JetBrains Mono',monospace">© Unsplash · Offshore Oil Rig</div>
+</section>
+<div class="stripe"></div>
+
+<!-- PILLARS -->
+<section id="pillars" class="sec" style="background:#fff">
+  <div class="wrap">
+    <div class="rv"><div class="sey">Tres actores. Un ecosistema.</div><h2 class="sh2">Diseñado para reflejar la estructura real del sector</h2><p class="ssb" style="max-width:580px">Cada actor tiene su propio panel, herramientas y flujos — integrados bajo una sola plataforma que el MMH controla.</p></div>
+    <div class="pgr">
+      <div class="pil rv"><div class="pac" style="background:var(--ink)"></div><div class="picw" style="background:var(--bp)">🏛️</div><div class="ptag" style="color:var(--blue)">Regulador</div><h3 class="pti">Ministerio de Minas e Hidrocarburos</h3><p class="pde">Supervisión centralizada. Aprueba proveedores, monitorea el cumplimiento de contenido local por operadora y genera reportes para organismos internacionales.</p><button class="plk" style="color:var(--blue)" onclick="loginAs('mmh')">Acceso institucional <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+      <div class="pil rv" style="transition-delay:.1s"><div class="pac" style="background:var(--sig)"></div><div class="picw" style="background:var(--sig3)">⚙️</div><div class="ptag" style="color:#059669">Operadora</div><h3 class="pti">Empresas Operadoras (IOCs)</h3><p class="pde">Publica licitaciones, gestiona contrataciones, reporta contenido local al MMH y accede al directorio oficial de proveedores calificados del sector.</p><button class="plk" style="color:#059669" onclick="loginAs('ioc')">Acceso operadora <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+      <div class="pil rv" style="transition-delay:.2s"><div class="pac" style="background:var(--gold)"></div><div class="picw" style="background:var(--gold3)">🏢</div><div class="ptag" style="color:#92620A">Proveedor</div><h3 class="pti">Empresas de Servicios y Suministros</h3><p class="pde">Regístrate en el directorio oficial, postula a oportunidades de las operadoras y gestiona tu expediente de cumplimiento desde un solo panel.</p><button class="plk" style="color:#92620A" onclick="loginAs('vendor')">Acceso proveedor <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="sec" style="background:var(--mist)">
+  <div class="wrap">
+    <div class="rv" style="text-align:center"><div class="sey" style="display:flex;justify-content:center">Cómo funciona</div><h2 class="sh2">Del registro a la adjudicación, en un solo flujo auditado</h2><p class="ssb">Proceso trazable y conforme a la Ley 8/2006 de Hidrocarburos de Guinea Ecuatorial.</p></div>
+    <div class="stgr">
+      <div class="stcon"></div>
+      <div class="stp ac rv"><div class="stn">1</div><div class="stit">Registro y calificación</div><div class="stde">La empresa presenta su expediente. El MMH revisa y aprueba el ingreso al directorio oficial de proveedores calificados.</div></div>
+      <div class="stp rv" style="transition-delay:.1s"><div class="stn">2</div><div class="stit">Publicación de licitaciones</div><div class="stde">Las operadoras publican oportunidades. Los proveedores calificados reciben alertas automáticas por categoría.</div></div>
+      <div class="stp rv" style="transition-delay:.2s"><div class="stn">3</div><div class="stit">Postulación y evaluación</div><div class="stde">Los proveedores postulan directamente. Las operadoras evalúan dentro del directorio calificado por el MMH.</div></div>
+      <div class="stp rv" style="transition-delay:.3s"><div class="stn">4</div><div class="stit">Reporte de contenido local</div><div class="stde">Cada adjudicación queda registrada. El cumplimiento de LC se reporta automáticamente al MMH para auditoría.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LC SECTION -->
+<section id="lcsec" class="sec" style="background:#fff">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center">
+      <div class="rv">
+        <div class="sey">Contenido Local</div><h2 class="sh2">Trazabilidad total del contenido local — Ley 8/2006</h2><p class="ssb" style="margin-bottom:36px">Visibilidad en tiempo real del cumplimiento de todas las operadoras, con alertas automáticas y exportación de reportes para organismos internacionales.</p>
+        <div style="display:flex;flex-direction:column;gap:24px">
+          <div style="display:flex;gap:16px;align-items:flex-start"><div style="width:40px;height:40px;border-radius:12px;background:var(--gold3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">✅</div><div><div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px">Monitor de cumplimiento en tiempo real</div><div style="font-size:13px;color:var(--sl);line-height:1.65">Porcentaje de contenido local por operadora, actualizado con cada adjudicación. Alerta automática cuando una IOC cae bajo el umbral del 60%.</div></div></div>
+          <div style="display:flex;gap:16px;align-items:flex-start"><div style="width:40px;height:40px;border-radius:12px;background:var(--gold3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">📊</div><div><div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px">Reportes para organismos internacionales</div><div style="font-size:13px;color:var(--sl);line-height:1.65">Informes estructurados para Presidencia, Banco Mundial y AfDB — exportables desde el dashboard del MMH en un clic.</div></div></div>
+          <div style="display:flex;gap:16px;align-items:flex-start"><div style="width:40px;height:40px;border-radius:12px;background:var(--gold3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px">🔒</div><div><div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px">Registro inmutable de adjudicaciones</div><div style="font-size:13px;color:var(--sl);line-height:1.65">Auditoría completa de cada contrato: empresa beneficiaria, origen, categoría y valor — trazable en todo momento.</div></div></div>
+        </div>
+      </div>
+      <div class="lcv rv" style="transition-delay:.15s">
+        <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:5px;position:relative;z-index:1">Monitor · Contenido Local 2025</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.35);margin-bottom:22px;font-family:'JetBrains Mono',monospace;position:relative;z-index:1">Meta regulatoria: 60% · Ley 8/2006</div>
+        <div style="position:relative;z-index:1">
+          <div class="lcr"><div class="lcn">Chevron EG</div><div class="lct"><div class="lcf" style="width:68%;background:var(--sig)"></div></div><div class="lcp" style="color:var(--sig)">68%</div><div class="lcb lok">Cumple</div></div>
+          <div class="lcr"><div class="lcn">GEPetrol</div><div class="lct"><div class="lcf" style="width:72%;background:var(--sig)"></div></div><div class="lcp" style="color:var(--sig)">72%</div><div class="lcb lok">Cumple</div></div>
+          <div class="lcr"><div class="lcn">Noble/Eni</div><div class="lct"><div class="lcf" style="width:61%;background:var(--sig)"></div></div><div class="lcp" style="color:var(--sig)">61%</div><div class="lcb lok">Cumple</div></div>
+          <div class="lcr"><div class="lcn">Kosmos</div><div class="lct"><div class="lcf" style="width:58%;background:var(--gold)"></div></div><div class="lcp" style="color:var(--gold)">58%</div><div class="lcb lwn">Atención</div></div>
+          <div class="lcr"><div class="lcn">Trident</div><div class="lct"><div class="lcf" style="width:54%;background:#F87171"></div></div><div class="lcp" style="color:#FCA5A5">54%</div><div class="lcb lbd">Alerta</div></div>
+        </div>
+        <div style="margin-top:22px;padding:14px 16px;background:rgba(220,38,38,.12);border-radius:8px;border:1px solid rgba(220,38,38,.2);position:relative;z-index:1">
+          <div style="font-size:10px;font-weight:700;color:#FCA5A5;margin-bottom:4px;text-transform:uppercase;letter-spacing:.08em">⚠ Alerta activa — Trident Energy</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.4);line-height:1.65">Por debajo del umbral del 60%. Plan de mejora solicitado. Fecha límite: 30 Jun 2025.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TENDERS -->
+<section id="tpub" class="sec" style="background:var(--mist)">
+  <div class="wrap">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px" class="rv"><div><div class="sey">Oportunidades activas</div><h2 class="sh2">Licitaciones abiertas en el sector</h2></div><button class="btn b-ol btn-sm" onclick="loginAs('vendor')">Ver todas →</button></div>
+    <div class="tgr">
+      <div class="tc rv"><div style="display:flex;gap:8px;margin-bottom:12px"><span class="tag t-bl">Suministros</span><span class="lpf">✓ Pref. nacional</span></div><h3 class="tth">Suministro de Equipos de Seguridad Industrial Offshore</h3><div class="tme"><span>🏢 Chevron EG</span><span>📅 10 Jul 2025</span></div><p class="tde">EPIs certificados, uniformes ignífugos, botas dieléctricas y kits de emergencia para personal en operaciones offshore.</p><div class="tfo"><button class="btn b-pr btn-sm" onclick="loginAs('vendor')">Postular</button><button class="btn b-ol btn-sm">Ver detalles</button></div></div>
+      <div class="tc rv" style="transition-delay:.08s"><div style="display:flex;gap:8px;margin-bottom:12px"><span class="tag t-gr">Consultoría</span></div><h3 class="tth">Consultoría Ambiental y Cumplimiento HSE Offshore</h3><div class="tme"><span>🏢 Trident Energy EG</span><span>📅 25 Jul 2025</span></div><p class="tde">Auditoría técnica de impacto ambiental y preparación de documentación ante el MMH conforme a normativas vigentes.</p><div class="tfo"><button class="btn b-pr btn-sm" onclick="loginAs('vendor')">Postular</button><button class="btn b-ol btn-sm">Ver detalles</button></div></div>
+      <div class="tc rv" style="transition-delay:.12s"><div style="display:flex;gap:8px;margin-bottom:12px"><span class="tag t-am">Logística</span><span class="lpf">✓ Pref. nacional</span></div><h3 class="tth">Transporte de Personal — Malabo a Punta Europa</h3><div class="tme"><span>🏢 Chevron EG</span><span>📅 05 Jul 2025</span></div><p class="tde">Transporte diario de personal técnico entre Malabo y la terminal de Punta Europa. Flota mínima de 5 unidades certificadas.</p><div class="tfo"><button class="btn b-pr btn-sm" onclick="loginAs('vendor')">Postular</button><button class="btn b-ol btn-sm">Ver detalles</button></div></div>
+      <div class="tc rv" style="transition-delay:.16s"><div style="display:flex;gap:8px;margin-bottom:12px"><span class="tag t-pu">Ingeniería</span></div><h3 class="tth">Inspección y Mantenimiento de Infraestructura Submarina</h3><div class="tme"><span>🏢 Noble Energy (Eni)</span><span>📅 30 Jun 2025</span></div><p class="tde">Inspección ROV y mantenimiento de ductos submarinos en Bloque O. Certificaciones internacionales requeridas.</p><div class="tfo"><button class="btn b-pr btn-sm" onclick="loginAs('vendor')">Postular</button><button class="btn b-ol btn-sm">Ver detalles</button></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section id="nsec" class="sec" style="background:#fff">
+  <div class="wrap">
+    <div class="rv" style="margin-bottom:0"><div class="sey">Actualidad</div><h2 class="sh2">Últimas noticias del sector</h2></div>
+    <div class="ngr rv">
+      <div>
+        <div class="nit"><span class="tag t-gd">MMH</span><div class="nti">Plan Nacional de Contenido Local 2025–2030 publicado por el Ministerio de Minas e Hidrocarburos</div><div class="ndt">3 de junio de 2025</div></div>
+        <div class="nit"><span class="tag t-gr">Licitación</span><div class="nti">Chevron EG lanza proceso competitivo para servicios logísticos offshore — cierre 10 de julio</div><div class="ndt">1 de junio de 2025</div></div>
+        <div class="nit"><span class="tag t-bl">Regulación</span><div class="nti">SONAGAS actualiza los requisitos de registro para proveedores de servicios en el sector gas</div><div class="ndt">28 de mayo de 2025</div></div>
+        <div class="nit"><span class="tag t-pu">Sector</span><div class="nti">EG Ronda 2026: MMH inicia consultas con operadoras para adjudicación de nuevos bloques exploratorios</div><div class="ndt">20 de mayo de 2025</div></div>
+      </div>
+      <div>
+        <div class="sw"><div class="swt">Cifras del sector · 2025</div><div class="swr"><span style="color:var(--sl);font-size:13px">Producción diaria</span><span class="swv">80.000 bbl/d</span></div><div class="swr"><span style="color:var(--sl);font-size:13px">Bloques activos</span><span class="swv">12</span></div><div class="swr"><span style="color:var(--sl);font-size:13px">Operadoras</span><span class="swv">6</span></div><div class="swr"><span style="color:var(--sl);font-size:13px">Capacidad GNL</span><span class="swv">3.7 MTPA</span></div><div class="swr"><span style="color:var(--sl);font-size:13px">Meta LC nacional</span><span class="swv">60%</span></div></div>
+        <div class="sw"><div class="swt">Próximos eventos</div><div class="swr"><span style="color:var(--sl);font-size:13px">EG Ronda 2026</span><span class="swv">Ene 2026</span></div><div class="swr"><span style="color:var(--sl);font-size:13px">Foro GNL África</span><span class="swv">Sep 2025</span></div><div class="swr"><span style="color:var(--sl);font-size:13px">Reporte LC T2</span><span class="swv">30 Jun 2025</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta"><div class="cbg"></div><div class="cc rv"><div class="sey" style="display:flex;justify-content:center;color:var(--gold2)">Únete a NexoEG</div><h2 class="ch2">¿Listo para conectarte<br>al <mark>sector energético</mark>?</h2><p class="cp2">Registra tu empresa, accede al directorio oficial o inicia sesión con las credenciales de tu institución u operadora.</p><div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap"><button class="btn b-pr" onclick="openOv('ov-reg')">Registrar empresa</button><button class="btn b-gd" onclick="openOv('ov-login')">Iniciar sesión</button></div></div></section>
+
+<footer>
+  <div class="wrap">
+    <div class="ftgr">
+      <div><div style="display:flex;align-items:center;gap:10px"><div class="nlgi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0D1B2A" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div class="nlgn">NexoEG</div></div><div class="ftd">Plataforma oficial del sector hidrocarburos de Guinea Ecuatorial. Con el respaldo del Ministerio de Minas e Hidrocarburos.</div></div>
+      <div class="ftco"><div class="ftct">Plataforma</div><a href="#">Sobre NexoEG</a><a href="#">Cómo funciona</a><a href="#">Licitaciones</a><a href="#">Directorio</a></div>
+      <div class="ftco"><div class="ftct">Regulación</div><a href="#">Ley 8/2006</a><a href="#">Contenido Local</a><a href="#">Requisitos</a><a href="#">Circulares MMH</a></div>
+      <div class="ftco"><div class="ftct">Contacto</div><a href="#">info@nexoeg.gq</a><a href="#">+240 222 000 000</a><a href="#">Malabo, Guinea Ecuatorial</a><a href="#">Soporte técnico</a></div>
+    </div>
+    <div class="ftbo"><div class="ftcp">© 2025 NexoEG · República de Guinea Ecuatorial · Todos los derechos reservados</div><div class="ftlg"><a href="#">Términos</a><a href="#">Privacidad</a><a href="#">Accesibilidad</a></div></div>
+  </div>
+</footer>
+</div><!-- /pg-home -->
+<!-- ══ MMH v4 — PANEL REGULATORIO ══ -->
+<div id="pg-mmh" class="page">
+<div class="dl">
+  <aside class="sb">
+    <div class="sbg"><span class="sbl">Panel</span>
+      <button class="sbi on" onclick="dSw('mmh','mm-ov',this)"><span class="sbic">⬡</span>Vista General del Sector</button>
+    </div>
+    <div class="sbg"><span class="sbl">Analítica</span>
+      <button class="sbi" onclick="dSw('mmh','mm-charts',this)"><span class="sbic">📊</span>Gráficos y Tendencias</button>
+      <button class="sbi" onclick="dSw('mmh','mm-blq',this)"><span class="sbic">🗺</span>Actividad por Bloque</button>
+    </div>
+    <div class="sbg"><span class="sbl">Contenido Local</span>
+      <button class="sbi" onclick="dSw('mmh','mm-lc',this)"><span class="sbic">📈</span>Monitor de Cumplimiento</button>
+      <button class="sbi" onclick="dSw('mmh','mm-rep',this)"><span class="sbic">📋</span>Reportes Exportables</button>
+    </div>
+    <div class="sbg"><span class="sbl">Proveedores</span>
+      <button class="sbi" onclick="dSw('mmh','mm-dir',this)"><span class="sbic">🏢</span>Directorio Oficial</button>
+      <button class="sbi" onclick="dSw('mmh','mm-ap',this)"><span class="sbic">✅</span>Solicitudes<span class="sbd">4</span></button>
+      <button class="sbi" onclick="dSw('mmh','mm-hse',this)"><span class="sbic">🛡</span>Cumplimiento HSE</button>
+    </div>
+    <div class="sbg"><span class="sbl">Ronda 2026</span>
+      <button class="sbi" onclick="dSw('mmh','mm-ronda',this)"><span class="sbic">🌍</span>EG Ronda 2026</button>
+    </div>
+    <div class="sbg"><span class="sbl">Regulación</span>
+      <button class="sbi" onclick="dSw('mmh','mm-cir',this)"><span class="sbic">📢</span>Circulares<span class="sbd sbda">2</span></button>
+      <button class="sbi" onclick="dSw('mmh','mm-lic',this)"><span class="sbic">📑</span>Licitaciones del Sector</button>
+    </div>
+  </aside>
+  <main class="dm"><div class="dc">
+
+    <!-- ── VISTA GENERAL v4 ── -->
+    <div id="mm-ov">
+      <div class="ph-v4">
+        <div class="ph-v4-left">
+          <div class="phl">Panel Regulatorio — v4</div>
+          <div class="pht">Vista General del Sector Hidrocarburos</div>
+          <div class="phs">MMH · Dirección de Contenido Nacional · <span class="mo" style="font-size:11px;color:var(--gas)">● Live</span></div>
+        </div>
+        <div class="ph-v4-actions">
+          <button class="btn b-ol b-sm" onclick="showToast('Exportando reporte nacional...','info')">📤 Exportar</button>
+          <button class="btn b-pr b-sm" onclick="dSw('mmh','mm-cir',null)">+ Nueva circular</button>
+        </div>
+      </div>
+      <div class="sg4" style="margin-bottom:20px">
+        <div class="sbox ac-ga"><div class="sl">Producción nacional</div><div class="sn kpi-counter" style="color:var(--ink)" data-val="80400">0</div><div class="ss ss-mu">bbl/día · T2 2025</div></div>
+        <div class="sbox ac-gd"><div class="sl">LC promedio del sector</div><div class="sn kpi-counter" style="color:var(--gas)" data-val="62" data-suffix="%">0%</div><div class="ss ss-up">✓ Sobre la meta del 60%</div></div>
+        <div class="sbox ac-am"><div class="sl">Operadoras en alerta</div><div class="sn" style="color:var(--red)">2</div><div class="ss ss-wn">Kosmos · Trident</div></div>
+        <div class="sbox ac-bl"><div class="sl">Proveedores calificados</div><div class="sn kpi-counter" style="color:var(--blue)" data-val="127">0</div><div class="ss ss-up">↑ +14 este mes</div></div>
+      </div>
+      <div class="g2" style="margin-bottom:20px">
+        <!-- Mini LC chart + estado -->
+        <div class="card">
+          <div class="ctit"><span class="ctit-l">LC por Operadora · T2 2025</span><button class="btn b-ol b-xs" onclick="dSw('mmh','mm-charts',null)">Ver gráficos →</button></div>
+          <div class="lcir"><div class="lcin">GEPetrol</div><div class="ptrack" style="flex:1;margin:0 10px"><div class="pfill" style="width:72%;background:var(--gas)"></div></div><strong class="mo" style="font-size:13px;color:var(--gas);width:36px;text-align:right">72%</strong><span class="tag t-gr">Cumple</span></div>
+          <div class="lcir"><div class="lcin">Chevron EG</div><div class="ptrack" style="flex:1;margin:0 10px"><div class="pfill" style="width:68%;background:var(--gas)"></div></div><strong class="mo" style="font-size:13px;color:var(--gas);width:36px;text-align:right">68%</strong><span class="tag t-gr">Cumple</span></div>
+          <div class="lcir"><div class="lcin">Noble/Eni</div><div class="ptrack" style="flex:1;margin:0 10px"><div class="pfill" style="width:61%;background:var(--gas)"></div></div><strong class="mo" style="font-size:13px;color:var(--gas);width:36px;text-align:right">61%</strong><span class="tag t-gr">Cumple</span></div>
+          <div class="lcir"><div class="lcin">Kosmos</div><div class="ptrack" style="flex:1;margin:0 10px"><div class="pfill" style="width:58%;background:var(--gold)"></div></div><strong class="mo" style="font-size:13px;color:var(--amber);width:36px;text-align:right">58%</strong><span class="tag t-am">⚠</span></div>
+          <div class="lcir"><div class="lcin">Trident</div><div class="ptrack" style="flex:1;margin:0 10px"><div class="pfill" style="width:54%;background:var(--red)"></div></div><strong class="mo" style="font-size:13px;color:var(--red);width:36px;text-align:right">54%</strong><span class="tag t-rd">🔴</span></div>
+        </div>
+        <!-- Timeline de actividad -->
+        <div class="card">
+          <div class="ctit">Actividad reciente</div>
+          <div class="timeline">
+            <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Hoy, 10:30</div><div class="tl-title">Reporte LC T2 — Chevron EG</div><div class="tl-desc">Reporte enviado: 68% · Cumple umbral</div></div>
+            <div class="tl-item"><div class="tl-dot now"></div><div class="tl-date">Hoy, 09:15</div><div class="tl-title">⚠ Alerta — Kosmos Energy cae al 58%</div><div class="tl-desc">Primer aviso enviado. Plazo: 15 Jul 2025</div></div>
+            <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Ayer, 16:00</div><div class="tl-title">3 nuevas solicitudes de proveedor</div><div class="tl-desc">Bata Logistics, West Africa Drilling, EcoConsult</div></div>
+            <div class="tl-item"><div class="tl-dot next"></div><div class="tl-date">30 Jun 2025</div><div class="tl-title">Límite reporte LC T2 del sector</div><div class="tl-desc">Todas las operadoras deben reportar</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="g2">
+        <div class="card">
+          <div class="ctit"><span class="ctit-l">Solicitudes pendientes</span><span class="tag t-am">4</span></div>
+          <table class="tbl"><thead><tr><th>Empresa</th><th>País</th><th>Docs</th><th></th></tr></thead><tbody>
+            <tr><td><strong>Servicios Tecnológicos del Golfo</strong></td><td><span class="tag t-gd">GE</span></td><td><span class="mo" style="font-size:12px;color:var(--amber)">8/9</span></td><td style="display:flex;gap:5px"><button class="btn b-ga b-xs" onclick="showToast('Empresa aprobada ✓','')">✓</button><button class="btn b-da b-xs">✗</button></td></tr>
+            <tr><td><strong>West Africa Drilling Ltd.</strong></td><td><span class="tag t-ik">Nigeria</span></td><td><span class="mo" style="font-size:12px;color:var(--gas)">12/12</span></td><td style="display:flex;gap:5px"><button class="btn b-ga b-xs" onclick="showToast('Empresa aprobada ✓','')">✓</button><button class="btn b-da b-xs">✗</button></td></tr>
+            <tr><td><strong>Bata Logistics &amp; Transport</strong></td><td><span class="tag t-gd">GE</span></td><td><span class="mo" style="font-size:12px;color:var(--gas)">9/9</span></td><td style="display:flex;gap:5px"><button class="btn b-ga b-xs" onclick="showToast('Empresa aprobada ✓','')">✓</button><button class="btn b-da b-xs">✗</button></td></tr>
+            <tr><td><strong>EcoConsult Cameroon</strong></td><td><span class="tag t-ik">Camerún</span></td><td><span class="mo" style="font-size:12px;color:var(--red)">7/9</span></td><td><button class="btn b-ol b-xs">Ver</button></td></tr>
+          </tbody></table>
+        </div>
+        <div class="card" style="background:var(--ink)">
+          <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:16px">Cifras del sector · 2025</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+            <div><div class="mo" style="font-size:22px;font-weight:500;color:#fff">12</div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:3px">Bloques activos</div></div>
+            <div><div class="mo" style="font-size:22px;font-weight:500;color:#fff">3.7</div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:3px">MTPA GNL</div></div>
+            <div><div class="mo" style="font-size:22px;font-weight:500;color:var(--gas)">62%</div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:3px">LC promedio</div></div>
+            <div><div class="mo" style="font-size:22px;font-weight:500;color:var(--gold)">$248K</div><div style="font-size:11px;color:rgba(255,255,255,.4);margin-top:3px">Adj. local T2</div></div>
+          </div>
+          <button class="btn b-pr b-sm" style="margin-top:18px;width:100%;justify-content:center" onclick="dSw('mmh','mm-ronda',null)">Ver EG Ronda 2026 →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── GRÁFICOS v4 ── -->
+    <div id="mm-charts" class="dn">
+      <div class="ph-v4">
+        <div class="ph-v4-left"><div class="phl">Analítica</div><div class="pht">Gráficos y Tendencias del Sector</div></div>
+        <div class="ph-v4-actions"><button class="btn b-pr b-sm" onclick="showToast('Exportando gráficos en PDF...','info')">📤 Exportar PDF</button></div>
+      </div>
+      <!-- LC Trend Chart -->
+      <div class="card" style="margin-bottom:20px">
+        <div class="ctit">Evolución del Contenido Local por Operadora — 2024–2025</div>
+        <div class="chart-legend">
+          <div class="chart-legend-item"><div class="chart-legend-dot" style="background:#1FCFA1"></div>GEPetrol</div>
+          <div class="chart-legend-item"><div class="chart-legend-dot" style="background:#2563EB"></div>Chevron EG</div>
+          <div class="chart-legend-item"><div class="chart-legend-dot" style="background:#8B5CF6"></div>Noble/Eni</div>
+          <div class="chart-legend-item"><div class="chart-legend-dot" style="background:#C8952A"></div>Kosmos</div>
+          <div class="chart-legend-item"><div class="chart-legend-dot" style="background:#DC2626"></div>Trident</div>
+        </div>
+        <div class="chart-wrap">
+          <svg id="lc-trend-chart" width="100%" height="220" viewBox="0 0 700 220">
+            <!-- Grid lines -->
+            <line x1="60" y1="20" x2="680" y2="20" stroke="#E8EFF7" stroke-width="1"/>
+            <line x1="60" y1="60" x2="680" y2="60" stroke="#E8EFF7" stroke-width="1"/>
+            <line x1="60" y1="100" x2="680" y2="100" stroke="#E8EFF7" stroke-width="1" stroke-dasharray="4,3"/>
+            <line x1="60" y1="140" x2="680" y2="140" stroke="#E8EFF7" stroke-width="1"/>
+            <line x1="60" y1="180" x2="680" y2="180" stroke="#E8EFF7" stroke-width="1"/>
+            <!-- 60% threshold line -->
+            <line x1="60" y1="100" x2="680" y2="100" stroke="#D97706" stroke-width="1.5" stroke-dasharray="6,4" opacity=".6"/>
+            <text x="684" y="104" class="chart-label" fill="#D97706" font-size="9">60%</text>
+            <!-- Y axis labels -->
+            <text x="48" y="24"  class="chart-axis" text-anchor="end">80%</text>
+            <text x="48" y="64"  class="chart-axis" text-anchor="end">70%</text>
+            <text x="48" y="104" class="chart-axis" text-anchor="end">60%</text>
+            <text x="48" y="144" class="chart-axis" text-anchor="end">50%</text>
+            <text x="48" y="184" class="chart-axis" text-anchor="end">40%</text>
+            <!-- X axis labels -->
+            <text x="100" y="210" class="chart-axis" text-anchor="middle">T1'24</text>
+            <text x="225" y="210" class="chart-axis" text-anchor="middle">T2'24</text>
+            <text x="350" y="210" class="chart-axis" text-anchor="middle">T3'24</text>
+            <text x="475" y="210" class="chart-axis" text-anchor="middle">T4'24</text>
+            <text x="600" y="210" class="chart-axis" text-anchor="middle">T1'25</text>
+            <!-- GEPetrol line (72%) — consistently high -->
+            <polyline class="chart-line" stroke="#1FCFA1" points="100,64 225,60 350,56 475,52 600,48" opacity=".9"/>
+            <!-- Chevron line (68%) -->
+            <polyline class="chart-line" stroke="#2563EB" points="100,80 225,76 350,72 475,68 600,64" opacity=".9"/>
+            <!-- Noble/Eni line (61%) -->
+            <polyline class="chart-line" stroke="#8B5CF6" points="100,108 225,104 350,104 475,100 600,100" opacity=".9"/>
+            <!-- Kosmos line (58% — declining) -->
+            <polyline class="chart-line" stroke="#C8952A" points="100,96 225,100 350,108 475,116 600,116" opacity=".9"/>
+            <!-- Trident line (54% — sharp decline) -->
+            <polyline class="chart-line" stroke="#DC2626" points="100,100 225,104 350,112 475,124 600,136" opacity=".9"/>
+            <!-- Dots for latest quarter -->
+            <circle class="chart-dot" cx="600" cy="48"  r="4" fill="#1FCFA1"/>
+            <circle class="chart-dot" cx="600" cy="64"  r="4" fill="#2563EB"/>
+            <circle class="chart-dot" cx="600" cy="100" r="4" fill="#8B5CF6"/>
+            <circle class="chart-dot" cx="600" cy="116" r="4" fill="#C8952A"/>
+            <circle class="chart-dot" cx="600" cy="136" r="4" fill="#DC2626"/>
+            <!-- Value labels -->
+            <text x="608" y="52"  class="chart-label" fill="#1FCFA1" font-weight="600">72%</text>
+            <text x="608" y="68"  class="chart-label" fill="#2563EB" font-weight="600">68%</text>
+            <text x="608" y="104" class="chart-label" fill="#8B5CF6" font-weight="600">61%</text>
+            <text x="608" y="120" class="chart-label" fill="#C8952A" font-weight="600">58%</text>
+            <text x="608" y="140" class="chart-label" fill="#DC2626" font-weight="600">54%</text>
+          </svg>
+        </div>
+      </div>
+      <!-- Bar chart: licitaciones por categoría -->
+      <div class="g2">
+        <div class="card">
+          <div class="ctit">Licitaciones por Categoría · 2025</div>
+          <svg width="100%" height="180" viewBox="0 0 300 180">
+            <text x="10" y="170" class="chart-axis">Logística</text>
+            <text x="10" y="135" class="chart-axis">Suministros</text>
+            <text x="10" y="100" class="chart-axis">Ingeniería</text>
+            <text x="10" y="65"  class="chart-axis">Consultoría</text>
+            <text x="10" y="30"  class="chart-axis">Tecnología</text>
+            <rect class="bar-rect" x="80" y="152" width="96" height="20" rx="4" fill="#1FCFA1" opacity=".85"/>
+            <rect class="bar-rect" x="80" y="117" width="120" height="20" rx="4" fill="#2563EB" opacity=".85"/>
+            <rect class="bar-rect" x="80" y="82"  width="72"  height="20" rx="4" fill="#8B5CF6" opacity=".85"/>
+            <rect class="bar-rect" x="80" y="47"  width="48"  height="20" rx="4" fill="#C8952A" opacity=".85"/>
+            <rect class="bar-rect" x="80" y="12"  width="36"  height="20" rx="4" fill="#DC2626" opacity=".85"/>
+            <text x="182" y="167" class="chart-label" font-weight="600" fill="#1FCFA1">12</text>
+            <text x="206" y="132" class="chart-label" font-weight="600" fill="#2563EB">15</text>
+            <text x="158" y="97"  class="chart-label" font-weight="600" fill="#8B5CF6">9</text>
+            <text x="134" y="62"  class="chart-label" font-weight="600" fill="#C8952A">6</text>
+            <text x="122" y="27"  class="chart-label" font-weight="600" fill="#DC2626">4</text>
+          </svg>
+        </div>
+        <div class="card">
+          <div class="ctit">Adjudicaciones: Nacional vs. Internacional</div>
+          <div style="display:flex;align-items:center;justify-content:center;gap:32px;padding:16px 0">
+            <div style="text-align:center">
+              <svg width="110" height="110" viewBox="0 0 110 110">
+                <circle cx="55" cy="55" r="40" fill="none" stroke="var(--border2)" stroke-width="16"/>
+                <circle cx="55" cy="55" r="40" fill="none" stroke="var(--gas)" stroke-width="16" stroke-dasharray="160 91" stroke-dashoffset="-23" stroke-linecap="round"/>
+                <circle cx="55" cy="55" r="40" fill="none" stroke="var(--gold)" stroke-width="16" stroke-dasharray="91 160" stroke-dashoffset="137" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div style="display:flex;align-items:center;gap:8px"><div style="width:12px;height:12px;border-radius:3px;background:var(--gas)"></div><div><div style="font-weight:700;font-size:15px">64%</div><div style="font-size:11px;color:var(--slate)">Empresas nacionales GE</div></div></div>
+              <div style="display:flex;align-items:center;gap:8px"><div style="width:12px;height:12px;border-radius:3px;background:var(--gold)"></div><div><div style="font-weight:700;font-size:15px">36%</div><div style="font-size:11px;color:var(--slate)">Empresas internacionales</div></div></div>
+            </div>
+          </div>
+          <div class="al al-ok" style="margin-bottom:0"><span class="al-ic">✓</span><div style="font-size:12px">Tendencia positiva: +4pp vs. T2 2024. Meta 2026: 70% nacional.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── EG RONDA 2026 ── -->
+    <div id="mm-ronda" class="dn">
+      <div class="ph-v4">
+        <div class="ph-v4-left"><div class="phl">Exploración</div><div class="pht">EG Ronda 2026 — Licitación Internacional de Bloques</div></div>
+        <div class="ph-v4-actions"><button class="btn b-pr b-sm" onclick="showToast('Preparando paquete informativo...','info')">📦 Paquete informativo</button></div>
+      </div>
+      <div class="ronda-card" style="margin-bottom:20px">
+        <div class="ronda-tag"><span>EG Ronda 2026 · República de Guinea Ecuatorial</span></div>
+        <div class="ronda-title">4 bloques exploratorios disponibles — Golfo de Guinea</div>
+        <div class="ronda-sub">El MMH abre la primera ronda de licitación de bloques exploratorios desde 2019. Con reservas estimadas de 300–500 Mbbl en los cuatro bloques, EG Ronda 2026 posiciona a Guinea Ecuatorial como el destino de inversión más activo del Golfo de Guinea.</div>
+        <div class="ronda-blocks">
+          <div class="ronda-block"><div class="rb-name">Bloque EG-23</div><div class="rb-type">Exploración offshore</div><div class="rb-area">Golfo de Guinea Norte</div></div>
+          <div class="ronda-block"><div class="rb-name">Bloque EG-24</div><div class="rb-type">Exploración offshore</div><div class="rb-area">Cuenca de Bioko</div></div>
+          <div class="ronda-block"><div class="rb-name">Bloque EG-25</div><div class="rb-type">Gas natural</div><div class="rb-area">Zona costera Muni</div></div>
+          <div class="ronda-block"><div class="rb-name">Bloque EG-26</div><div class="rb-type">Exploración onshore</div><div class="rb-area">Región Continental</div></div>
+        </div>
+        <div style="display:flex;gap:12px"><button class="btn b-pr b-sm">Publicar convocatoria oficial</button><button class="btn b-gd b-sm">Gestionar candidatos (7 IOCs)</button></div>
+      </div>
+      <div class="g2">
+        <div class="card">
+          <div class="ctit">Cronograma EG Ronda 2026</div>
+          <div class="timeline">
+            <div class="tl-item"><div class="tl-dot done"></div><div class="tl-date">Jun 2025</div><div class="tl-title">Consultas previas con IOCs</div><div class="tl-desc">7 operadoras han expresado interés formal</div></div>
+            <div class="tl-item"><div class="tl-dot now"></div><div class="tl-date">Sep 2025</div><div class="tl-title">Publicación de bases técnicas</div><div class="tl-desc">Datos sísmicos, condiciones contractuales y LC</div></div>
+            <div class="tl-item"><div class="tl-dot next"></div><div class="tl-date">Nov 2025</div><div class="tl-title">Apertura del data room</div><div class="tl-desc">Acceso a información geológica confidencial</div></div>
+            <div class="tl-item"><div class="tl-dot next"></div><div class="tl-date">Ene 2026</div><div class="tl-title">Recepción de ofertas</div><div class="tl-desc">Presentación formal de candidaturas</div></div>
+            <div class="tl-item"><div class="tl-dot next"></div><div class="tl-date">Mar 2026</div><div class="tl-title">Firma de contratos PSC</div><div class="tl-desc">Formalización con operadoras seleccionadas</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="ctit">IOCs interesadas confirmadas</div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="padding:12px;border:1px solid var(--border2);border-radius:var(--r8);display:flex;justify-content:space-between;align-items:center"><div><div style="font-weight:600;font-size:13px">Chevron Corporation</div><div style="font-size:11px;color:var(--slate)">EE.UU. · Bloques EG-23, EG-24</div></div><span class="tag t-gr">Confirmada</span></div>
+            <div style="padding:12px;border:1px solid var(--border2);border-radius:var(--r8);display:flex;justify-content:space-between;align-items:center"><div><div style="font-weight:600;font-size:13px">Kosmos Energy</div><div style="font-size:11px;color:var(--slate)">EE.UU. · Bloque EG-25 (gas)</div></div><span class="tag t-gr">Confirmada</span></div>
+            <div style="padding:12px;border:1px solid var(--border2);border-radius:var(--r8);display:flex;justify-content:space-between;align-items:center"><div><div style="font-weight:600;font-size:13px">Eni S.p.A.</div><div style="font-size:11px;color:var(--slate)">Italia · Todos los bloques</div></div><span class="tag t-gr">Confirmada</span></div>
+            <div style="padding:12px;border:1px solid var(--border2);border-radius:var(--r8);display:flex;justify-content:space-between;align-items:center"><div><div style="font-weight:600;font-size:13px">TotalEnergies</div><div style="font-size:11px;color:var(--slate)">Francia · Bloques EG-24, EG-26</div></div><span class="tag t-bl">En evaluación</span></div>
+            <div style="padding:12px;border:1px solid var(--border2);border-radius:var(--r8);display:flex;justify-content:space-between;align-items:center"><div><div style="font-weight:600;font-size:13px">+ 3 operadoras más</div><div style="font-size:11px;color:var(--slate)">Bajo NDA · Información confidencial</div></div><span class="tag t-am">Confidencial</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── MONITOR LC ── -->
+    <div id="mm-lc" class="dn">
+      <div class="ph-v4">
+        <div class="ph-v4-left"><div class="phl">Contenido Local</div><div class="pht">Monitor de Cumplimiento — Ley 8/2006</div></div>
+        <div class="ph-v4-actions"><button class="btn b-pr b-sm" onclick="showToast('Exportando reporte LC...','info')">📤 Exportar PDF</button></div>
+      </div>
+      <div class="al al-da" style="margin-bottom:16px"><span class="al-ic">🔴</span><div><strong>Trident Energy (54%)</strong> por debajo del umbral mínimo del 60%. Plan de mejora vence 30 Jun 2025.</div></div>
+      <div class="al al-wn" style="margin-bottom:20px"><span class="al-ic">⚠</span><div><strong>Kosmos Energy (58%)</strong> por debajo del umbral. Primer aviso. Plazo de corrección: 15 Jul 2025.</div></div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <div style="display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr 1fr 1fr;padding:11px 16px;border-bottom:2px solid var(--border2);background:#FAFBFC">
+          <span style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate)">Operadora</span>
+          <span style="font-size:10px;font-weight:700;text-transform:uppercase;color:var(--slate)">T1 2025</span>
+          <span style="font-size:10px;font-weight:700;text-transform:uppercase;color:var(--slate)">T2 2025</span>
+          <span style="font-size:10px;font-weight:700;text-transform:uppercase;color:var(--slate)">Tendencia</span>
+          <span style="font-size:10px;font-weight:700;text-transform:uppercase;color:var(--slate)">Meta</span>
+          <span style="font-size:10px;font-weight:700;text-transform:uppercase;color:var(--slate)">Estado</span>
+        </div>
+        <div style="display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr 1fr 1fr;align-items:center;padding:15px 16px;border-bottom:1px solid var(--border2)"><div><div style="font-weight:700;font-size:13px;margin-bottom:5px">GEPetrol</div><div class="ptrack"><div class="pfill" style="width:72%;background:var(--gas)"></div></div></div><span class="mo" style="color:var(--gas);font-size:12px">70%</span><span class="mo" style="color:var(--gas);font-size:13px;font-weight:700">72%</span><span style="color:var(--gas);font-size:12px">↑ +2%</span><span class="mo" style="color:var(--slate);font-size:11px">60%</span><span class="tag t-gr">Cumple</span></div>
+        <div style="display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr 1fr 1fr;align-items:center;padding:15px 16px;border-bottom:1px solid var(--border2)"><div><div style="font-weight:700;font-size:13px;margin-bottom:5px">Chevron EG</div><div class="ptrack"><div class="pfill" style="width:68%;background:var(--gas)"></div></div></div><span class="mo" style="color:var(--gas);font-size:12px">65%</span><span class="mo" style="color:var(--gas);font-size:13px;font-weight:700">68%</span><span style="color:var(--gas);font-size:12px">↑ +3%</span><span class="mo" style="color:var(--slate);font-size:11px">60%</span><span class="tag t-gr">Cumple</span></div>
+        <div style="display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr 1fr 1fr;align-items:center;padding:15px 16px;border-bottom:1px solid var(--border2)"><div><div style="font-weight:700;font-size:13px;margin-bottom:5px">Noble / Eni</div><div class="ptrack"><div class="pfill" style="width:61%;background:var(--gas)"></div></div></div><span class="mo" style="color:var(--gas);font-size:12px">60%</span><span class="mo" style="color:var(--gas);font-size:13px;font-weight:700">61%</span><span style="color:var(--gas);font-size:12px">↑ +1%</span><span class="mo" style="color:var(--slate);font-size:11px">60%</span><span class="tag t-gr">Cumple</span></div>
+        <div style="display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr 1fr 1fr;align-items:center;padding:15px 16px;border-bottom:1px solid var(--border2);background:rgba(212,168,67,.04)"><div><div style="font-weight:700;font-size:13px;margin-bottom:5px">Kosmos Energy</div><div class="ptrack"><div class="pfill" style="width:58%;background:var(--gold)"></div></div></div><span class="mo" style="color:var(--amber);font-size:12px">55%</span><span class="mo" style="color:var(--amber);font-size:13px;font-weight:700">58%</span><span style="color:var(--amber);font-size:12px">↑ +3%</span><span class="mo" style="color:var(--slate);font-size:11px">60%</span><span class="tag t-am">⚠</span></div>
+        <div style="display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr 1fr 1fr;align-items:center;padding:15px 16px;background:rgba(217,48,37,.04)"><div><div style="font-weight:700;font-size:13px;margin-bottom:5px">Trident Energy</div><div class="ptrack"><div class="pfill" style="width:54%;background:var(--red)"></div></div></div><span class="mo" style="color:var(--red);font-size:12px">58%</span><span class="mo" style="color:var(--red);font-size:13px;font-weight:700">54%</span><span style="color:var(--red);font-size:12px">↓ -4%</span><span class="mo" style="color:var(--slate);font-size:11px">60%</span><span class="tag t-rd">🔴</span></div>
+      </div>
+    </div>
+
+    <!-- ── ACTIVIDAD POR BLOQUE ── -->
+    <div id="mm-blq" class="dn">
+      <div class="ph"><div class="phl">Monitoreo</div><div class="pht">Actividad por Bloque Hidrocarburífero</div></div>
+      <div class="card" style="padding:0;overflow:hidden;margin-bottom:20px">
+        <table class="tbl"><thead><tr><th>Bloque</th><th>Operadora</th><th>Tipo</th><th>Producción</th><th>LC</th><th>Estado</th></tr></thead><tbody>
+          <tr><td><strong class="mo">Bloque B</strong></td><td>Chevron EG</td><td>Petróleo</td><td><span class="mo">38,000 bbl/d</span></td><td><span class="mo" style="color:var(--gas);font-weight:600">68%</span></td><td><span class="tag t-gr">Operativo</span></td></tr>
+          <tr><td><strong class="mo">Bloque O</strong></td><td>Noble/Eni</td><td>Petróleo</td><td><span class="mo">12,400 bbl/d</span></td><td><span class="mo" style="color:var(--gas);font-weight:600">61%</span></td><td><span class="tag t-gr">Operativo</span></td></tr>
+          <tr><td><strong class="mo">Bloque G</strong></td><td>GEPetrol</td><td>Gas/Petróleo</td><td><span class="mo">22,000 bbl/d</span></td><td><span class="mo" style="color:var(--gas);font-weight:600">72%</span></td><td><span class="tag t-gr">Operativo</span></td></tr>
+          <tr><td><strong class="mo">Bloque I</strong></td><td>Kosmos Energy</td><td>Exploración</td><td><span class="mo" style="color:var(--slate)">—</span></td><td><span class="mo" style="color:var(--amber);font-weight:600">58%</span></td><td><span class="tag t-am">Exploración</span></td></tr>
+          <tr><td><strong class="mo">Bloque EG-21</strong></td><td>Trident Energy</td><td>Petróleo</td><td><span class="mo">8,000 bbl/d</span></td><td><span class="mo" style="color:var(--red);font-weight:600">54%</span></td><td><span class="tag t-rd">Alerta LC</span></td></tr>
+          <tr><td><strong class="mo">Campo Alen</strong></td><td>Chevron EG</td><td>Gas / GNL</td><td><span class="mo">3.7 MTPA</span></td><td><span class="mo" style="color:var(--gas);font-weight:600">71%</span></td><td><span class="tag t-gr">Monetización</span></td></tr>
+        </tbody></table>
+      </div>
+    </div>
+
+    <!-- ── REPORTES ── -->
+    <div id="mm-rep" class="dn">
+      <div class="ph"><div class="phl">Reportes</div><div class="pht">Reportes Exportables — Estándares Internacionales</div></div>
+      <div class="g2">
+        <div class="card" style="border-top:4px solid var(--ink)"><div style="font-size:28px;margin-bottom:14px">📊</div><div style="font-weight:700;font-size:15px;margin-bottom:6px">Reporte Nacional LC — Banco Mundial</div><div style="font-size:13px;color:var(--slate);margin-bottom:18px;line-height:1.65">Formato compatible EITI. Consolidado todas las operadoras. Aprobado por el MMH.</div><button class="btn b-pr b-sm" onclick="showToast('Generando reporte en formato EITI...','info')">Generar PDF</button></div>
+        <div class="card" style="border-top:4px solid var(--blue)"><div style="font-size:28px;margin-bottom:14px">🌍</div><div style="font-weight:700;font-size:15px;margin-bottom:6px">Paquete EG Ronda 2026</div><div style="font-size:13px;color:var(--slate);margin-bottom:18px;line-height:1.65">Datos sísmicos, LC histórico, bloques disponibles y condiciones fiscales para inversores.</div><button class="btn b-ik b-sm" onclick="showToast('Preparando paquete inversores...','info')">Preparar informe</button></div>
+        <div class="card" style="border-top:4px solid var(--gas)"><div style="font-size:28px;margin-bottom:14px">🏢</div><div style="font-weight:700;font-size:15px;margin-bottom:6px">Directorio Proveedores Calificados</div><div style="font-size:13px;color:var(--slate);margin-bottom:18px;line-height:1.65">127 empresas aprobadas con scores, categorías, origen y cumplimiento documental.</div><button class="btn b-ga b-sm" onclick="showToast('Exportando directorio en Excel...','info')">Exportar Excel</button></div>
+        <div class="card" style="border-top:4px solid var(--gold)"><div style="font-size:28px;margin-bottom:14px">📑</div><div style="font-weight:700;font-size:15px;margin-bottom:6px">Historial Adjudicaciones y LC</div><div style="font-size:13px;color:var(--slate);margin-bottom:18px;line-height:1.65">Registro histórico completo con trazabilidad para auditorías EITI y AfDB.</div><button class="btn b-ol b-sm" onclick="showToast('Exportando CSV...','info')">Exportar CSV</button></div>
+      </div>
+    </div>
+
+    <!-- ── DIRECTORIO ── -->
+    <div id="mm-dir" class="dn">
+      <div class="ph-v4">
+        <div class="ph-v4-left"><div class="phl">Proveedores</div><div class="pht">Directorio Oficial de Proveedores</div></div>
+        <div class="ph-v4-actions"><button class="btn b-pr b-sm" onclick="showToast('Exportando directorio...','info')">📤 Exportar</button><button class="btn b-ik b-sm">+ Nuevo</button></div>
+      </div>
+      <div style="display:flex;gap:10px;margin-bottom:18px">
+        <input class="fi" style="max-width:260px;padding:9px 13px" placeholder="🔍  Buscar empresa..."/>
+        <select class="fi" style="max-width:190px;padding:9px 13px"><option>Todas las categorías</option><option>Suministros</option><option>Logística</option><option>Ingeniería</option><option>HSE</option><option>Tecnología</option></select>
+        <select class="fi" style="max-width:160px;padding:9px 13px"><option>Todos los países</option><option>Guinea Ecuatorial</option><option>Nigeria</option><option>Camerún</option></select>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <table class="tbl"><thead><tr><th>Empresa</th><th>País</th><th>Categoría</th><th>Score</th><th>Contratos</th><th>Desde</th><th>Estado</th><th></th></tr></thead><tbody>
+          <tr><td><strong>Logística Bioko S.A.</strong></td><td>🇬🇶 GE</td><td>Logística</td><td><span class="mo" style="font-weight:700;color:var(--gas)">94</span></td><td><span class="mo">3</span></td><td><span class="mo" style="font-size:11px;color:var(--slate)">Mar 2024</span></td><td><span class="tag t-gr">Activo</span></td><td><button class="btn b-ol b-xs">Ver</button></td></tr>
+          <tr><td><strong>TechServ Malabo</strong></td><td>🇬🇶 GE</td><td>Tecnología</td><td><span class="mo" style="font-weight:700;color:var(--gas)">89</span></td><td><span class="mo">2</span></td><td><span class="mo" style="font-size:11px;color:var(--slate)">Feb 2025</span></td><td><span class="tag t-gr">Activo</span></td><td><button class="btn b-ol b-xs">Ver</button></td></tr>
+          <tr><td><strong>West Africa Drilling Ltd.</strong></td><td>🇳🇬 Nigeria</td><td>Ingeniería</td><td><span class="mo" style="font-weight:700;color:var(--gas)">87</span></td><td><span class="mo">4</span></td><td><span class="mo" style="font-size:11px;color:var(--slate)">Ene 2024</span></td><td><span class="tag t-gr">Activo</span></td><td><button class="btn b-ol b-xs">Ver</button></td></tr>
+          <tr><td><strong>EcoConsult Cameroon</strong></td><td>🇨🇲 Camerún</td><td>HSE</td><td><span class="mo" style="font-weight:700;color:var(--amber)">71</span></td><td><span class="mo">1</span></td><td><span class="mo" style="font-size:11px;color:var(--slate)">May 2025</span></td><td><span class="tag t-am">Revisión</span></td><td><button class="btn b-ol b-xs">Ver</button></td></tr>
+          <tr><td><strong>Servicios Tec. del Golfo</strong></td><td>🇬🇶 GE</td><td>Tecnología</td><td><span class="mo" style="color:var(--slate)">—</span></td><td><span class="mo">0</span></td><td><span class="mo" style="font-size:11px;color:var(--slate)">Jun 2025</span></td><td><span class="tag t-gd">Pendiente</span></td><td><button class="btn b-ga b-xs" onclick="showToast('Empresa aprobada ✓','')">✓</button></td></tr>
+        </tbody></table>
+      </div>
+    </div>
+
+    <!-- ── SOLICITUDES ── -->
+    <div id="mm-ap" class="dn">
+      <div class="ph"><div class="phl">Proveedores</div><div class="pht">Solicitudes Pendientes</div></div>
+      <div class="al al-wn" style="margin-bottom:20px"><span class="al-ic">⚠</span><div>4 solicitudes en cola. Plazo regulatorio: 5 días hábiles desde recepción.</div></div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="acard" style="border-left:4px solid var(--amber)">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px"><div><div style="font-weight:700;font-size:16px">Servicios Tecnológicos del Golfo S.A.</div><div style="font-size:12px;color:var(--slate);margin-top:3px">GE · Tecnología · Recibido: 05 Jun 2025</div></div><span class="tag t-am">3 días en revisión</span></div>
+          <!-- v4: Workflow tracker -->
+          <div class="workflow-track" style="margin-bottom:16px">
+            <div class="wf-step"><div class="wf-connector done" style="left:50%"></div><div class="wf-node done">✓</div><div class="wf-label done">Recibida</div></div>
+            <div class="wf-step"><div class="wf-connector done" style="left:-50%;right:50%"></div><div class="wf-node done">✓</div><div class="wf-label done">Docs parciales</div></div>
+            <div class="wf-step"><div class="wf-connector" style="left:-50%;right:50%"></div><div class="wf-node active">→</div><div class="wf-label active">En revisión</div></div>
+            <div class="wf-step"><div class="wf-node">4</div><div class="wf-label">Aprobada</div></div>
+          </div>
+          <div class="dgr"><div class="dgi">📄 Reg. mercantil <strong style="color:var(--gas)">✓</strong></div><div class="dgi">🧾 Lic. comercial <strong style="color:var(--gas)">✓</strong></div><div class="dgi">🔖 Cert. NIF <strong style="color:var(--gas)">✓</strong></div><div class="dgi">📊 Cert. fiscal <strong style="color:var(--gas)">✓</strong></div><div class="dgi">🛡 Política HSE <strong style="color:var(--gas)">✓</strong></div><div class="dgi">📃 Est. financieros <strong style="color:var(--amber)">Pendiente</strong></div></div>
+          <div style="display:flex;gap:10px"><button class="btn b-ga b-sm" onclick="showToast('Empresa aprobada. Se notificó al proveedor. ✓','')">✓ Aprobar</button><button class="btn b-da b-sm">✗ Rechazar</button><button class="btn b-ol b-sm">Ver expediente</button></div>
+        </div>
+        <div class="acard" style="border-left:4px solid var(--gas)">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px"><div><div style="font-weight:700;font-size:16px">West Africa Drilling Support Ltd.</div><div style="font-size:12px;color:var(--slate);margin-top:3px">Nigeria · Ingeniería · Documentación completa ✓</div></div><span class="tag t-gr">Listo para aprobar</span></div>
+          <div style="display:flex;gap:10px"><button class="btn b-ga b-sm" onclick="showToast('West Africa Drilling aprobada. ✓','')">✓ Aprobar</button><button class="btn b-da b-sm">✗ Rechazar</button><button class="btn b-ol b-sm">Ver expediente</button></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── HSE ── -->
+    <div id="mm-hse" class="dn">
+      <div class="ph"><div class="phl">Seguridad</div><div class="pht">Cumplimiento HSE — Circular MMH-2025-04</div></div>
+      <div class="al al-in" style="margin-bottom:20px"><span class="al-ic">ℹ</span><div>MMH-2025-04 establece nuevos estándares HSE offshore. Vigencia: 15 May 2025.</div></div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <table class="tbl"><thead><tr><th>Operadora</th><th>Cert. HSE</th><th>Plan emergencias</th><th>Última auditoría</th><th>Estado</th></tr></thead><tbody>
+          <tr><td><strong>GEPetrol</strong></td><td><span class="tag t-gr">Vigente</span></td><td><span class="tag t-gr">Aprobado</span></td><td><span class="mo" style="font-size:11px">Mar 2025</span></td><td><span class="tag t-gr">✓ Cumple</span></td></tr>
+          <tr><td><strong>Chevron EG</strong></td><td><span class="tag t-gr">Vigente</span></td><td><span class="tag t-gr">Aprobado</span></td><td><span class="mo" style="font-size:11px">Abr 2025</span></td><td><span class="tag t-gr">✓ Cumple</span></td></tr>
+          <tr><td><strong>Noble/Eni</strong></td><td><span class="tag t-gr">Vigente</span></td><td><span class="tag t-gr">Aprobado</span></td><td><span class="mo" style="font-size:11px">Feb 2025</span></td><td><span class="tag t-gr">✓ Cumple</span></td></tr>
+          <tr><td><strong>Kosmos Energy</strong></td><td><span class="tag t-am">Por renovar</span></td><td><span class="tag t-gr">Aprobado</span></td><td><span class="mo" style="font-size:11px">Oct 2024</span></td><td><span class="tag t-am">⚠ Pendiente</span></td></tr>
+          <tr><td><strong>Trident Energy</strong></td><td><span class="tag t-rd">Vencida</span></td><td><span class="tag t-am">En revisión</span></td><td><span class="mo" style="font-size:11px">Ago 2024</span></td><td><span class="tag t-rd">🔴 Incumple</span></td></tr>
+        </tbody></table>
+      </div>
+    </div>
+
+    <!-- ── CIRCULARES ── -->
+    <div id="mm-cir" class="dn">
+      <div class="ph-v4">
+        <div class="ph-v4-left"><div class="phl">Regulación</div><div class="pht">Circulares y Alertas</div></div>
+        <div class="ph-v4-actions"><button class="btn b-pr b-sm" onclick="showToast('Nueva circular creada','')">+ Nueva circular</button></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="card" style="border-left:4px solid var(--red)"><div style="display:flex;justify-content:space-between;align-items:flex-start"><div><span class="tag t-rd" style="margin-bottom:10px;display:inline-flex">Alerta activa</span><div style="font-weight:700;font-size:15px;margin-bottom:4px">Trident Energy — Incumplimiento LC T2 y HSE</div><div style="font-size:12px;color:var(--slate)">1 Jun 2025 · Vence: 30 Jun 2025</div></div><button class="btn b-ol b-sm">Ver respuesta</button></div></div>
+        <div class="card" style="border-left:4px solid var(--amber)"><div style="display:flex;justify-content:space-between;align-items:flex-start"><div><span class="tag t-am" style="margin-bottom:10px;display:inline-flex">Aviso — Kosmos</span><div style="font-weight:700;font-size:15px;margin-bottom:4px">Kosmos Energy por debajo del 60% de LC</div><div style="font-size:12px;color:var(--slate)">5 Jun 2025 · Plazo: 15 Jul 2025</div></div><button class="btn b-ol b-sm">Ver aviso</button></div></div>
+        <div class="card" style="border-left:4px solid var(--blue)"><div style="display:flex;justify-content:space-between;align-items:flex-start"><div><span class="tag t-bl" style="margin-bottom:10px;display:inline-flex">Circular MMH-2025-04</span><div style="font-weight:700;font-size:15px;margin-bottom:4px">Nuevos requisitos HSE para operaciones offshore</div><div style="font-size:12px;color:var(--slate)">15 May 2025 · Todas las operadoras</div></div><button class="btn b-ol b-sm">Ver</button></div></div>
+      </div>
+    </div>
+
+    <!-- ── LICITACIONES ── -->
+    <div id="mm-lic" class="dn">
+      <div class="ph"><div class="phl">Licitaciones</div><div class="pht">Licitaciones Activas del Sector</div></div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <table class="tbl"><thead><tr><th>Licitación</th><th>Operadora</th><th>Categoría</th><th>Cierre</th><th>Posts.</th><th>LC</th><th>Estado</th></tr></thead><tbody>
+          <tr><td><strong>Suministro Equipos Seguridad</strong></td><td>Chevron EG</td><td>Suministros</td><td><span class="mo" style="font-size:12px">10 Jul 2025</span></td><td><span class="mo">7</span></td><td><span class="tag t-gr">Sí</span></td><td><span class="tag t-gr">Activa</span></td></tr>
+          <tr><td><strong>Consultoría Ambiental HSE</strong></td><td>Trident Energy</td><td>Consultoría</td><td><span class="mo" style="font-size:12px">25 Jul 2025</span></td><td><span class="mo">3</span></td><td><span class="tag t-ik">No</span></td><td><span class="tag t-gr">Activa</span></td></tr>
+          <tr><td><strong>Transporte Malabo–Punta Europa</strong></td><td>Chevron EG</td><td>Logística</td><td><span class="mo" style="font-size:12px">05 Jul 2025</span></td><td><span class="mo">12</span></td><td><span class="tag t-gr">Sí</span></td><td><span class="tag t-gr">Activa</span></td></tr>
+          <tr><td><strong>Inspección Submarina Bloque O</strong></td><td>Noble / Eni</td><td>Ingeniería</td><td><span class="mo" style="font-size:12px">30 Jun 2025</span></td><td><span class="mo">2</span></td><td><span class="tag t-ik">No</span></td><td><span class="tag t-am">Cierra pronto</span></td></tr>
+        </tbody></table>
+      </div>
+    </div>
+
+  </div></main>
+</div>
+</div><!-- /pg-mmh -->
+
+<!-- ══ IOC v4 — OPERADORA ══ -->
+<div id="pg-ioc" class="page">
+<div class="dl">
+  <aside class="sb">
+    <div class="sbg"><span class="sbl">Panel</span>
+      <button class="sbi on" onclick="dSw('ioc','ii-ov',this)"><span class="sbic">⬡</span>Resumen Operacional</button>
+    </div>
+    <div class="sbg"><span class="sbl">Proveedores</span>
+      <button class="sbi" onclick="dSw('ioc','ii-dir',this)"><span class="sbic">🔍</span>Buscar Proveedores</button>
+      <button class="sbi" onclick="dSw('ioc','ii-eval',this)"><span class="sbic">⚖️</span>Comparar Proveedores</button>
+      <button class="sbi" onclick="dSw('ioc','ii-prf',this)"><span class="sbic">⭐</span>Favoritos</button>
+    </div>
+    <div class="sbg"><span class="sbl">Contratación</span>
+      <button class="sbi" onclick="dSw('ioc','ii-lic',this)"><span class="sbic">📑</span>Mis Licitaciones</button>
+      <button class="sbi" onclick="dSw('ioc','ii-bid',this)"><span class="sbic">📥</span>Postulaciones<span class="sbd">24</span></button>
+      <button class="sbi" onclick="dSw('ioc','ii-con',this)"><span class="sbic">🤝</span>Contratos Activos</button>
+    </div>
+    <div class="sbg"><span class="sbl">Cumplimiento</span>
+      <button class="sbi" onclick="dSw('ioc','ii-lc',this)"><span class="sbic">📈</span>Contenido Local</button>
+      <button class="sbi" onclick="dSw('ioc','ii-alt',this)"><span class="sbic">🔔</span>Alertas<span class="sbd">2</span></button>
+    </div>
+  </aside>
+  <main class="dm"><div class="dc">
+
+    <!-- ── RESUMEN OPERACIONAL ── -->
+    <div id="ii-ov">
+      <div class="ph-v4">
+        <div class="ph-v4-left"><div class="phl">Operadora · v4</div><div class="pht">Chevron Equatorial Guinea</div><div class="phs">Bloque B · Campo Alen · Punta Europa Operations</div></div>
+        <div class="ph-v4-actions"><button class="btn b-pr b-sm" onclick="dSw('ioc','ii-lic',null)">+ Nueva licitación</button></div>
+      </div>
+      <div class="sg4" style="margin-bottom:20px">
+        <div class="sbox ac-bl"><div class="sl">Licitaciones activas</div><div class="sn" style="color:var(--blue)">4</div><div class="ss ss-wn">2 próximas a cerrar</div></div>
+        <div class="sbox ac-am"><div class="sl">Postulaciones recibidas</div><div class="sn" style="color:var(--amber)">24</div><div class="ss ss-mu">Esta semana</div></div>
+        <div class="sbox ac-ga"><div class="sl">Contenido Local actual</div><div class="sn" style="color:var(--gas)">68%</div><div class="ss ss-up">↑ Meta 60% ✓</div></div>
+        <div class="sbox ac-ga"><div class="sl">Contratos vigentes</div><div class="sn" style="color:var(--ink)">11</div><div class="ss ss-mu">$1.8M valor total</div></div>
+      </div>
+      <div class="g2" style="margin-bottom:20px">
+        <div class="card">
+          <div class="ctit"><span class="ctit-l">Proveedores recomendados para tus necesidades activas</span></div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="padding:14px;border:1px solid rgba(31,207,161,.25);border-radius:var(--r12);background:rgba(31,207,161,.04);display:flex;align-items:center;gap:14px">
+              <div style="width:44px;height:44px;border-radius:var(--r12);background:var(--ink);color:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0">LB</div>
+              <div style="flex:1;min-width:0"><div style="font-weight:700;font-size:13px">Logística Bioko S.A.</div><div style="font-size:11px;color:var(--slate)">Logística · GE 🇬🇶 · 3 contratos previos con Chevron</div></div>
+              <div style="text-align:center;flex-shrink:0"><div class="mo" style="font-size:22px;font-weight:500;color:var(--gas)">94</div><div style="font-size:9px;color:var(--slate)">Score</div></div>
+              <button class="btn b-pr b-xs" onclick="showToast('Invitación enviada a Logística Bioko S.A. ✓','')">Invitar</button>
+            </div>
+            <div style="padding:14px;border:1px solid var(--border2);border-radius:var(--r12);background:var(--mist);display:flex;align-items:center;gap:14px">
+              <div style="width:44px;height:44px;border-radius:var(--r12);background:var(--ink2);color:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0">TS</div>
+              <div style="flex:1;min-width:0"><div style="font-weight:700;font-size:13px">TechServ Malabo</div><div style="font-size:11px;color:var(--slate)">Tecnología · GE 🇬🇶 · Especialistas en automatización</div></div>
+              <div style="text-align:center;flex-shrink:0"><div class="mo" style="font-size:22px;font-weight:500;color:var(--gas)">89</div><div style="font-size:9px;color:var(--slate)">Score</div></div>
+              <button class="btn b-pr b-xs" onclick="showToast('Invitación enviada a TechServ Malabo ✓','')">Invitar</button>
+            </div>
+          </div>
+          <button class="btn b-ol b-sm" style="width:100%;justify-content:center;margin-top:12px" onclick="dSw('ioc','ii-dir',null)">Ver directorio completo →</button>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="card"><div class="ctit">LC — Progreso T2 2025</div>
+            <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:8px"><span style="font-size:13px;color:var(--slate)">Actual</span><div style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;color:var(--gas)">68%</div></div>
+            <div class="ptrack" style="height:10px;margin-bottom:5px"><div class="pfill" style="width:68%;background:linear-gradient(90deg,var(--gas),var(--gas2))"></div></div>
+            <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--slate);margin-bottom:12px"><span>0%</span><span style="color:var(--amber);font-weight:600">Meta 60%</span><span>100%</span></div>
+            <button class="btn b-ga b-sm" style="width:100%;justify-content:center" onclick="showToast('Reporte enviado al MMH ✓','')">📤 Enviar reporte al MMH</button>
+          </div>
+          <div class="card"><div class="ctit">Cierres próximos</div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="padding:9px 12px;background:var(--red3);border-radius:var(--r8)"><div style="font-size:12px;font-weight:700;color:var(--red)">Inspección Submarina Bloque O</div><div style="font-size:11px;color:var(--slate)">Cierre: 30 Jun 2025 · 2 postulaciones</div></div>
+              <div style="padding:9px 12px;background:var(--amber3);border-radius:var(--r8)"><div style="font-size:12px;font-weight:700;color:var(--amber)">Transporte Malabo–Punta Europa</div><div style="font-size:11px;color:var(--slate)">Cierre: 05 Jul 2025 · 12 postulaciones</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── BUSCAR PROVEEDORES ── -->
+    <div id="ii-dir" class="dn">
+      <div class="ph"><div class="phl">Directorio Inteligente</div><div class="pht">Buscar Proveedores Calificados</div><div class="phs">Solo empresas aprobadas por el MMH · Filtros avanzados</div></div>
+      <div class="card" style="margin-bottom:16px;background:var(--mist)">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:10px">
+          <div><label style="font-size:11px;font-weight:600;color:var(--slate);display:block;margin-bottom:4px">Categoría</label><select class="fi" style="padding:8px 10px;font-size:13px"><option>Todas</option><option selected>Logística y transporte</option><option>Ingeniería</option><option>HSE</option><option>Tecnología</option><option>Suministros</option></select></div>
+          <div><label style="font-size:11px;font-weight:600;color:var(--slate);display:block;margin-bottom:4px">País</label><select class="fi" style="padding:8px 10px;font-size:13px"><option>Todos</option><option selected>Guinea Ecuatorial</option><option>Nigeria</option><option>Internacional</option></select></div>
+          <div><label style="font-size:11px;font-weight:600;color:var(--slate);display:block;margin-bottom:4px">Score mínimo</label><select class="fi" style="padding:8px 10px;font-size:13px"><option>Cualquiera</option><option selected>75+</option><option>85+</option><option>90+</option></select></div>
+          <div><label style="font-size:11px;font-weight:600;color:var(--slate);display:block;margin-bottom:4px">Cert. offshore</label><select class="fi" style="padding:8px 10px;font-size:13px"><option>Cualquiera</option><option selected>Requerida</option></select></div>
+        </div>
+        <div style="display:flex;gap:10px"><input class="fi" style="flex:1;padding:9px 13px" placeholder="🔍  Buscar por nombre, NIF, especialidad..."/><button class="btn b-pr b-sm" onclick="showToast('Búsqueda actualizada','info')">Buscar</button></div>
+      </div>
+      <div style="font-size:12px;color:var(--slate);margin-bottom:12px"><strong style="color:var(--ink)">4 proveedores</strong> coinciden con tus filtros</div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="card" style="border-left:4px solid var(--gas)">
+          <div style="display:flex;align-items:flex-start;gap:14px">
+            <div style="width:48px;height:48px;border-radius:var(--r12);background:var(--ink);color:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0">LB</div>
+            <div style="flex:1">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+                <div><div style="font-weight:700;font-size:15px">Logística Bioko S.A.</div><div style="font-size:12px;color:var(--slate)">Logística · GE 🇬🇶 · Nacional</div></div>
+                <div style="background:var(--gas3);border-radius:var(--r8);padding:8px 12px;text-align:center;flex-shrink:0"><div class="mo" style="font-size:22px;font-weight:500;color:var(--gas)">94</div><div style="font-size:9px;color:var(--slate)">Score</div></div>
+              </div>
+              <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px"><span class="tag t-gr">✓ Offshore</span><span class="tag t-gr">✓ Calificada MMH</span><span class="tag t-gd">3 contratos Chevron</span><span class="tag t-bl">Flota: 12 uds.</span></div>
+              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;background:var(--mist);border-radius:var(--r8);padding:10px;margin-bottom:10px">
+                <div><div class="mo" style="font-size:14px">3</div><div style="font-size:10px;color:var(--slate)">Contratos prev.</div></div>
+                <div><div class="mo" style="font-size:14px">100%</div><div style="font-size:10px;color:var(--slate)">Entregas a tiempo</div></div>
+                <div><div class="mo" style="font-size:14px">50–249</div><div style="font-size:10px;color:var(--slate)">Empleados</div></div>
+                <div><div class="mo" style="font-size:14px">Mar 2024</div><div style="font-size:10px;color:var(--slate)">En plataforma</div></div>
+              </div>
+              <div style="display:flex;gap:8px"><button class="btn b-pr b-sm" onclick="showToast('Invitación enviada a Logística Bioko ✓','')">Invitar a licitar</button><button class="btn b-ol b-sm">Ver perfil</button><button class="btn b-ol b-sm" onclick="dSw('ioc','ii-eval',null)">Comparar</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── COMPARAR PROVEEDORES — nuevo en v4 ── -->
+    <div id="ii-eval" class="dn">
+      <div class="ph"><div class="phl">Evaluación Comparativa</div><div class="pht">Comparar Proveedores para Licitación Activa</div><div class="phs">Transporte de Personal — Malabo a Punta Europa · 3 proveedores seleccionados</div></div>
+      <div class="card" style="padding:0;overflow:hidden;margin-bottom:16px">
+        <table class="comp-table">
+          <thead>
+            <tr>
+              <th style="width:200px">Criterio de evaluación</th>
+              <th>Logística Bioko S.A.<br><span style="font-weight:400;color:rgba(255,255,255,.45);font-size:9px">🇬🇶 Nacional · Score 94</span></th>
+              <th>Bata Logistics S.L.<br><span style="font-weight:400;color:rgba(255,255,255,.45);font-size:9px">🇬🇶 Nacional · Score 82</span></th>
+              <th>West Africa Logistics<br><span style="font-weight:400;color:rgba(255,255,255,.45);font-size:9px">🇳🇬 Internacional · Score 87</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Score NexoEG</td><td><span class="comp-best">94 / 100</span></td><td><span class="comp-ok">82 / 100</span></td><td><span class="comp-ok">87 / 100</span></td></tr>
+            <tr><td>Precio estimado</td><td><span class="comp-ok">$48,500</span></td><td><span class="comp-best">$42,000</span></td><td><span class="comp-warn">$55,000</span></td></tr>
+            <tr><td>Contratos previos sector</td><td><span class="comp-best">3 contratos (Chevron)</span></td><td><span class="comp-warn">0 contratos</span></td><td><span class="comp-ok">2 contratos</span></td></tr>
+            <tr><td>Tasa de entrega a tiempo</td><td><span class="comp-best">100%</span></td><td><span class="comp-warn">—</span></td><td><span class="comp-ok">94%</span></td></tr>
+            <tr><td>Certificación HSE offshore</td><td><span class="comp-best">✓ API RP 17N</span></td><td><span class="comp-ok">✓ Básica</span></td><td><span class="comp-best">✓ API RP 17N</span></td></tr>
+            <tr><td>Empresa nacional GE</td><td><span class="comp-best">✓ Preferencia LC</span></td><td><span class="comp-best">✓ Preferencia LC</span></td><td><span class="comp-warn">✗ Internacional</span></td></tr>
+            <tr><td>Tamaño de flota</td><td><span class="comp-best">12 unidades</span></td><td><span class="comp-ok">8 unidades</span></td><td><span class="comp-best">15 unidades</span></td></tr>
+            <tr><td>Disponibilidad 24/7</td><td><span class="comp-best">✓ Confirmada</span></td><td><span class="comp-warn">Por confirmar</span></td><td><span class="comp-best">✓ Confirmada</span></td></tr>
+            <tr><td>Impacto en LC Chevron</td><td><span class="comp-best">✓ +2.1% LC</span></td><td><span class="comp-best">✓ +1.8% LC</span></td><td><span class="comp-warn">Sin impacto LC</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="background:var(--ink)">
+        <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Recomendación de NEXO Brain</div>
+        <div style="font-size:14px;color:rgba(255,255,255,.8);line-height:1.7;margin-bottom:16px">Basado en el análisis comparativo, <strong style="color:#fff">Logística Bioko S.A.</strong> ofrece la mejor combinación de historial probado con Chevron, impacto positivo en LC, certificación offshore completa y disponibilidad 24/7. El precio de $48,500 está dentro del rango de mercado. Bata Logistics es la opción más económica pero sin historial sectorial.</div>
+        <div style="display:flex;gap:10px"><button class="btn b-pr b-sm" onclick="showToast('Logística Bioko S.A. preseleccionada ✓','')">Seleccionar Logística Bioko</button><button class="btn b-gd b-sm">Pedir segunda oferta</button></div>
+      </div>
+    </div>
+
+    <!-- ── LICITACIONES ── -->
+    <div id="ii-lic" class="dn">
+      <div class="ph-v4">
+        <div class="ph-v4-left"><div class="phl">Contratación</div><div class="pht">Mis Licitaciones</div></div>
+        <div class="ph-v4-actions"><button class="btn b-pr b-sm" onclick="showToast('Nueva licitación creada','')">+ Nueva</button></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <!-- v4: workflow status tracker per tender -->
+        <div class="card" style="border-left:4px solid var(--gas)">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px"><div><div style="font-weight:700;font-size:15px">Suministro de Equipos de Seguridad Industrial Offshore</div><div style="font-size:12px;color:var(--slate);margin-top:3px">Suministros · Cierre: 10 Jul 2025 · Pref. GE</div></div><span class="tag t-gr">Activa</span></div>
+          <div class="workflow-track">
+            <div class="wf-step"><div class="wf-connector done" style="left:50%"></div><div class="wf-node done">✓</div><div class="wf-label done">Publicada</div></div>
+            <div class="wf-step"><div class="wf-connector done" style="left:-50%;right:50%"></div><div class="wf-node done">✓</div><div class="wf-label done">Recibiendo</div></div>
+            <div class="wf-step"><div class="wf-connector" style="left:-50%;right:50%"></div><div class="wf-node active">→</div><div class="wf-label active">Evaluación</div></div>
+            <div class="wf-step"><div class="wf-node">4</div><div class="wf-label">Adjudicada</div></div>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:12px"><button class="btn b-pr b-sm" onclick="dSw('ioc','ii-bid',null)">Ver 7 postulaciones</button><button class="btn b-ol b-sm">Editar</button></div>
+        </div>
+        <div class="card" style="border-left:4px solid var(--amber)">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px"><div><div style="font-weight:700;font-size:15px">Transporte de Personal — Malabo a Punta Europa</div><div style="font-size:12px;color:var(--slate);margin-top:3px">Logística · Cierre: 05 Jul 2025 · Pref. GE</div></div><span class="tag t-am">⚠ Cierra pronto</span></div>
+          <div style="display:flex;gap:8px"><button class="btn b-pr b-sm">Ver 12 postulaciones</button><button class="btn b-da b-sm">Cerrar proceso</button></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── POSTULACIONES ── -->
+    <div id="ii-bid" class="dn">
+      <div class="ph"><div class="phl">Contratación</div><div class="pht">Postulaciones Recibidas</div></div>
+      <div class="tpb"><button class="tpp on" onclick="swPill(this)">Equipos Seguridad (7)</button><button class="tpp" onclick="swPill(this)">Transporte Personal (12)</button></div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <table class="tbl"><thead><tr><th>Empresa</th><th>País</th><th>Score</th><th>Contratos prev.</th><th>Precio</th><th>Cert. HSE</th><th>Impacto LC</th><th></th></tr></thead><tbody>
+          <tr><td><strong>Logística Bioko S.A.</strong></td><td>🇬🇶 GE</td><td><span class="mo" style="font-weight:700;font-size:14px;color:var(--gas)">94</span></td><td><span class="mo">3</span></td><td><span class="mo">$48,500</span></td><td><span class="tag t-gr">✓</span></td><td><span class="tag t-gr">+2.1%</span></td><td><button class="btn b-pr b-xs" onclick="showToast('Logística Bioko preseleccionada ✓','')">Seleccionar</button></td></tr>
+          <tr><td><strong>West Africa Supplies</strong></td><td>🇳🇬 Nigeria</td><td><span class="mo" style="font-weight:700;font-size:14px;color:var(--gas)">87</span></td><td><span class="mo">4</span></td><td><span class="mo">$52,000</span></td><td><span class="tag t-gr">✓</span></td><td><span class="tag t-ik">—</span></td><td><button class="btn b-pr b-xs">Seleccionar</button></td></tr>
+          <tr><td><strong>SafetyPro GE</strong></td><td>🇬🇶 GE</td><td><span class="mo" style="font-weight:700;font-size:14px;color:var(--amber)">71</span></td><td><span class="mo">0</span></td><td><span class="mo">$44,200</span></td><td><span class="tag t-am">⚠</span></td><td><span class="tag t-gr">+1.9%</span></td><td><button class="btn b-ol b-xs">Ver perfil</button></td></tr>
+        </tbody></table>
+      </div>
+    </div>
+
+    <!-- ── CONTRATOS ── -->
+    <div id="ii-con" class="dn">
+      <div class="ph"><div class="phl">Contratación</div><div class="pht">Contratos Activos</div><div class="phs">11 contratos vigentes · $1.8M valor total</div></div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <table class="tbl"><thead><tr><th>Proveedor</th><th>Servicio</th><th>Valor</th><th>Inicio</th><th>Vence</th><th>LC</th><th>Estado</th></tr></thead><tbody>
+          <tr><td><strong>Logística Bioko S.A.</strong></td><td>Transporte campo Alen</td><td><span class="mo">$48,500</span></td><td><span class="mo" style="font-size:11px">01 Abr 2025</span></td><td><span class="mo" style="font-size:11px">31 Mar 2026</span></td><td><span class="tag t-gr">Nacional ✓</span></td><td><span class="tag t-gr">Vigente</span></td></tr>
+          <tr><td><strong>TechServ Malabo</strong></td><td>Mantenimiento eléctrico</td><td><span class="mo">$32,000</span></td><td><span class="mo" style="font-size:11px">01 Jun 2025</span></td><td><span class="mo" style="font-size:11px">31 May 2026</span></td><td><span class="tag t-gr">Nacional ✓</span></td><td><span class="tag t-gr">Vigente</span></td></tr>
+          <tr><td><strong>West Africa Drilling</strong></td><td>Inspección submarina</td><td><span class="mo">$120,000</span></td><td><span class="mo" style="font-size:11px">15 Ene 2025</span></td><td><span class="mo" style="font-size:11px;color:var(--amber)">30 Jun 2025</span></td><td><span class="tag t-ik">Internacional</span></td><td><span class="tag t-am">⚠ Por vencer</span></td></tr>
+        </tbody></table>
+      </div>
+    </div>
+
+    <!-- ── CONTENIDO LOCAL ── -->
+    <div id="ii-lc" class="dn">
+      <div class="ph-v4">
+        <div class="ph-v4-left"><div class="phl">Cumplimiento</div><div class="pht">Contenido Local — Ley 8/2006</div></div>
+        <div class="ph-v4-actions"><button class="btn b-ga b-sm" onclick="showToast('Reporte enviado al MMH ✓','')">📤 Enviar al MMH</button></div>
+      </div>
+      <div class="al al-ok" style="margin-bottom:20px"><span class="al-ic">✓</span><div>Cumplimiento: <strong>68%</strong>. Sobre el mínimo del 60%. Posición en el sector: <strong>2º / 5 operadoras</strong>.</div></div>
+      <div class="g2">
+        <div class="card"><div class="ctit">Progreso T2 2025</div>
+          <div style="text-align:center;padding:20px 0"><div style="font-family:'Space Grotesk',sans-serif;font-size:64px;font-weight:700;color:var(--gas);line-height:1">68%</div><div style="font-size:13px;color:var(--slate);margin-top:6px">contenido local · Ley 8/2006</div></div>
+          <div class="ptrack" style="height:10px"><div class="pfill" style="width:68%;background:linear-gradient(90deg,var(--gas),var(--gas2))"></div></div>
+          <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--slate);margin-top:5px"><span>0%</span><span style="color:var(--amber);font-weight:600">Meta 60%</span><span>100%</span></div>
+          <div style="margin-top:14px;padding:10px;background:var(--gas3);border-radius:var(--r8);text-align:center;font-size:12px;color:#0A9B79;font-weight:600">+8pp sobre la meta · Posición: 2º/5 operadoras</div>
+        </div>
+        <div class="card"><div class="ctit">Adjudicaciones e impacto LC</div>
+          <table class="tbl"><thead><tr><th>Empresa</th><th>Valor</th><th>Tipo</th><th>Impacto</th></tr></thead><tbody>
+            <tr><td>Logística Bioko S.A.</td><td class="mo">$48,500</td><td><span class="tag t-gr">Nacional</span></td><td><span class="mo" style="color:var(--gas)">+2.1%</span></td></tr>
+            <tr><td>TechServ Malabo</td><td class="mo">$32,000</td><td><span class="tag t-gr">Nacional</span></td><td><span class="mo" style="color:var(--gas)">+1.4%</span></td></tr>
+            <tr><td>West Africa Drilling</td><td class="mo">$120,000</td><td><span class="tag t-ik">Internacional</span></td><td><span class="mo" style="color:var(--slate)">—</span></td></tr>
+          </tbody></table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── FAVORITOS ── -->
+    <div id="ii-prf" class="dn">
+      <div class="ph"><div class="phl">Directorio</div><div class="pht">Proveedores Favoritos</div></div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div class="card" style="display:flex;align-items:center;gap:14px"><div style="width:44px;height:44px;border-radius:var(--r12);background:var(--ink);color:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0">LB</div><div style="flex:1"><div style="font-weight:700;font-size:14px">Logística Bioko S.A.</div><div style="font-size:12px;color:var(--slate)">Logística · 3 contratos · Score 94</div></div><span class="tag t-gr">Disponible</span><button class="btn b-pr b-sm" onclick="showToast('Invitación enviada ✓','')">Invitar a licitar</button><button class="btn b-ol b-sm">Ver perfil</button></div>
+        <div class="card" style="display:flex;align-items:center;gap:14px"><div style="width:44px;height:44px;border-radius:var(--r12);background:var(--ink2);color:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0">TS</div><div style="flex:1"><div style="font-weight:700;font-size:14px">TechServ Malabo</div><div style="font-size:12px;color:var(--slate)">Tecnología · 2 contratos · Score 89</div></div><span class="tag t-gr">Disponible</span><button class="btn b-pr b-sm" onclick="showToast('Invitación enviada ✓','')">Invitar a licitar</button><button class="btn b-ol b-sm">Ver perfil</button></div>
+      </div>
+    </div>
+
+    <!-- ── ALERTAS ── -->
+    <div id="ii-alt" class="dn">
+      <div class="ph"><div class="phl">Regulación</div><div class="pht">Alertas Regulatorias</div></div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="card" style="border-left:4px solid var(--red)"><span class="tag t-rd" style="margin-bottom:12px;display:inline-flex">Urgente</span><div style="font-weight:700;font-size:15px;margin-bottom:6px">MMH-2025-04: Nuevos requisitos HSE offshore</div><div style="font-size:13px;color:var(--slate);margin-bottom:14px">Vigencia: 15 May 2025. Todos los proveedores offshore deben actualizar certificación HSE antes del 30 Jun 2025.</div><div style="display:flex;gap:10px"><button class="btn b-da b-sm" onclick="showToast('Recepción confirmada ✓','')">Confirmar recepción</button><button class="btn b-ol b-sm">Ver circular</button></div></div>
+        <div class="card" style="border-left:4px solid var(--amber)"><span class="tag t-am" style="margin-bottom:12px;display:inline-flex">Recordatorio</span><div style="font-weight:700;font-size:15px;margin-bottom:6px">Reporte LC T2 — vence 30 Jun 2025</div><div style="font-size:13px;color:var(--slate);margin-bottom:14px">Datos actuales: 68%. Envía tu reporte al MMH antes del cierre del trimestre.</div><button class="btn b-pr b-sm" onclick="showToast('Reporte enviado al MMH ✓','')">Enviar ahora</button></div>
+      </div>
+    </div>
+
+  </div></main>
+</div>
+</div><!-- /pg-ioc -->
+
+<!-- ══ VENDOR v4 — PROVEEDOR ══ -->
+<div id="pg-vendor" class="page">
+<div class="dl">
+  <aside class="sb">
+    <div class="sbg"><span class="sbl">Panel</span>
+      <button class="sbi on" onclick="dSw('vendor','vv-ov',this)"><span class="sbic">⬡</span>Mi Panel de Oportunidades</button>
+    </div>
+    <div class="sbg"><span class="sbl">Oportunidades</span>
+      <button class="sbi" onclick="dSw('vendor','vv-lic',this)"><span class="sbic">🔥</span>Licitaciones Activas<span class="sbd" style="background:var(--gas);color:var(--ink)">3</span></button>
+      <button class="sbi" onclick="dSw('vendor','vv-inv',this)"><span class="sbic">📨</span>Invitaciones Directas<span class="sbd">1</span></button>
+      <button class="sbi" onclick="dSw('vendor','vv-intel',this)"><span class="sbic">🧠</span>Intel del Sector</button>
+      <button class="sbi" onclick="dSw('vendor','vv-ioc',this)"><span class="sbic">🏭</span>Conocer Operadoras</button>
+    </div>
+    <div class="sbg"><span class="sbl">Mis Postulaciones</span>
+      <button class="sbi" onclick="dSw('vendor','vv-bid',this)"><span class="sbic">📥</span>Seguimiento</button>
+    </div>
+    <div class="sbg"><span class="sbl">Mi Empresa</span>
+      <button class="sbi" onclick="dSw('vendor','vv-pro',this)"><span class="sbic">🏢</span>Perfil Corporativo</button>
+      <button class="sbi" onclick="dSw('vendor','vv-doc',this)"><span class="sbic">📄</span>Expediente Documental</button>
+      <button class="sbi" onclick="dSw('vendor','vv-sco',this)"><span class="sbic">⭐</span>Mi Score NexoEG</button>
+    </div>
+  </aside>
+  <main class="dm"><div class="dc">
+
+    <!-- ── PANEL DE OPORTUNIDADES ── -->
+    <div id="vv-ov">
+      <div class="ph-v4">
+        <div class="ph-v4-left">
+          <div class="phl">Portal Proveedor · v4</div>
+          <div class="pht">Logística Bioko S.A.</div>
+          <div class="phs">Logística y transporte · <span style="color:var(--gas);font-weight:600">✓ Empresa calificada MMH · Top 5% del sector</span></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px">
+          <!-- Score dial v4 -->
+          <div class="score-dial">
+            <svg class="score-svg" viewBox="0 0 120 120">
+              <circle class="score-track" cx="60" cy="60" r="45"/>
+              <circle class="score-fill" cx="60" cy="60" r="45" stroke="var(--gas)" style="stroke-dashoffset:17"/>
+            </svg>
+            <div class="score-text"><div class="score-num" style="color:var(--gas)">94</div><div class="score-lbl">SCORE</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="sg4" style="margin-bottom:20px">
+        <div class="sbox ac-ga"><div class="sl">Oportunidades compatibles</div><div class="sn" style="color:var(--gas)">3</div><div class="ss ss-up">Según tu perfil hoy</div></div>
+        <div class="sbox ac-am"><div class="sl">Invitación directa</div><div class="sn" style="color:var(--amber)">1</div><div class="ss ss-wn">Chevron EG · Caduca en 12d</div></div>
+        <div class="sbox ac-bl"><div class="sl">Postulaciones activas</div><div class="sn" style="color:var(--blue)">3</div><div class="ss ss-mu">En evaluación</div></div>
+        <div class="sbox ac-ga"><div class="sl">Contratos adjudicados</div><div class="sn" style="color:var(--gas)">2</div><div class="ss ss-mu">$86,500 total</div></div>
+      </div>
+      <!-- Invitación directa destacada -->
+      <div style="background:linear-gradient(135deg,var(--ink) 0%,var(--ink2) 100%);border-radius:16px;padding:22px;margin-bottom:20px;display:flex;align-items:center;gap:18px">
+        <div style="width:48px;height:48px;border-radius:12px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0">📨</div>
+        <div style="flex:1"><div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:4px">Invitación directa · Chevron EG</div><div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:3px">Transporte de Personal — Malabo a Punta Europa</div><div style="font-size:12px;color:rgba(255,255,255,.5)">Cierre: 05 Jul 2025 · Estimado: $50K–70K · Preferencia empresa GE</div></div>
+        <div style="display:flex;flex-direction:column;gap:8px;flex-shrink:0"><button class="btn b-pr b-sm" onclick="showToast('Postulación enviada a Chevron EG ✓','')">Postular ahora</button><button class="btn b-gd b-sm">Ver detalles</button></div>
+      </div>
+      <div class="g21" style="margin-bottom:0">
+        <div class="card">
+          <div class="ctit">🔥 Oportunidades recomendadas para tu perfil</div>
+          <div style="display:flex;flex-direction:column;gap:11px">
+            <div style="padding:14px;border:1px solid rgba(31,207,161,.25);border-radius:var(--r12);background:rgba(31,207,161,.04)">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px"><div style="font-weight:700;font-size:14px">Transporte Malabo–Punta Europa</div><div style="background:var(--gas3);color:#0A9B79;font-size:13px;font-weight:700;padding:4px 11px;border-radius:var(--r99);font-family:'JetBrains Mono',monospace">94%</div></div>
+              <div style="font-size:12px;color:var(--slate);margin-bottom:8px">Chevron EG · Logística · Cierre: 05 Jul 2025</div>
+              <div style="display:flex;gap:7px;margin-bottom:10px"><span class="tag t-gr">✓ Tu categoría</span><span class="tag t-gr">✓ Pref. GE</span><span class="tag t-gr">✓ 3 contratos previos</span></div>
+              <button class="btn b-pr b-sm" onclick="showToast('Postulación enviada ✓','')">Postular ahora</button>
+            </div>
+            <div style="padding:14px;border:1px solid var(--border2);border-radius:var(--r12);background:var(--mist)">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px"><div style="font-weight:700;font-size:14px">Suministro Equipos de Seguridad</div><div style="background:var(--gold3);color:#8B6118;font-size:13px;font-weight:700;padding:4px 11px;border-radius:var(--r99);font-family:'JetBrains Mono',monospace">87%</div></div>
+              <div style="font-size:12px;color:var(--slate);margin-bottom:8px">Chevron EG · Suministros · Cierre: 10 Jul 2025</div>
+              <div style="display:flex;gap:7px;margin-bottom:10px"><span class="tag t-gd">⚠ Cert. ANSI requerida</span></div>
+              <button class="btn b-pr b-sm" onclick="showToast('Postulación enviada ✓','')">Postular ahora</button>
+            </div>
+            <div style="padding:14px;border:1px solid var(--border2);border-radius:var(--r12);background:var(--mist)">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px"><div style="font-weight:700;font-size:14px">Infraestructura Portuaria Bioko</div><div style="background:var(--blue3);color:var(--blue);font-size:13px;font-weight:700;padding:4px 11px;border-radius:var(--r99);font-family:'JetBrains Mono',monospace">71%</div></div>
+              <div style="font-size:12px;color:var(--slate);margin-bottom:10px">Trident Energy · Cierre: 20 Jul 2025</div>
+              <button class="btn b-pr b-sm" onclick="showToast('Postulación enviada ✓','')">Postular ahora</button>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="card">
+            <div class="ctit">Estado del Expediente</div>
+            <div style="display:flex;flex-direction:column">
+              <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border2);font-size:13px;align-items:center"><span>Registro mercantil</span><span class="tag t-gr">✓</span></div>
+              <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border2);font-size:13px;align-items:center"><span>Licencia comercial</span><span class="tag t-gr">✓</span></div>
+              <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border2);font-size:13px;align-items:center"><span>Certificado fiscal</span><span class="tag t-gr">✓</span></div>
+              <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border2);font-size:13px;align-items:center"><span>Política HSE</span><span class="tag t-gr">✓</span></div>
+              <div style="display:flex;justify-content:space-between;padding:8px 0;font-size:13px;align-items:center"><span>Estados financieros</span><span class="tag t-am">⚠ Vence 30 Jun</span></div>
+            </div>
+            <button class="btn b-pr b-sm" style="width:100%;justify-content:center;margin-top:10px" onclick="dSw('vendor','vv-doc',null)">Actualizar documentos →</button>
+          </div>
+          <div class="card" style="background:var(--amber3);border-color:rgba(212,168,67,.3)">
+            <div style="font-size:13px;font-weight:700;color:var(--amber);margin-bottom:6px">⚠ Acción requerida</div>
+            <div style="font-size:13px;color:#5C3A00;line-height:1.6">Estados financieros vencen el <strong>30 Jun 2025</strong>. Actualiza para mantener tu Score y elegibilidad.</div>
+            <button class="btn b-sm" style="margin-top:10px;background:var(--amber);color:#fff;border:none;width:100%;justify-content:center" onclick="showToast('Abriendo carga de documentos...','info')">Subir estados financieros</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── LICITACIONES ── -->
+    <div id="vv-lic" class="dn">
+      <div class="ph"><div class="phl">Oportunidades</div><div class="pht">Licitaciones Activas</div><div class="phs">Ordenadas por compatibilidad con tu perfil</div></div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="card" style="border:2px solid var(--gas)">
+          <div style="display:flex;gap:8px;margin-bottom:12px"><span class="tag t-am">Logística</span><span class="lpf">✓ Pref. GE</span><span style="margin-left:auto;background:var(--gas3);color:#0A9B79;font-size:11px;font-weight:700;padding:3px 11px;border-radius:var(--r99);font-family:'JetBrains Mono',monospace">📨 Invitación · 94%</span></div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:8px">Transporte de Personal — Malabo a Punta Europa</h3>
+          <div style="display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--slate);margin-bottom:10px"><span>🏢 Chevron EG</span><span>📅 05 Jul 2025</span><span>💰 $50K–70K est.</span><span>👥 12 postulantes</span></div>
+          <p style="font-size:13px;color:var(--slate);line-height:1.65;margin-bottom:12px">Transporte diario de personal técnico. Flota mínima: 5 unidades certificadas. Experiencia en sector requerida.</p>
+          <div style="padding:10px 12px;background:var(--gas3);border-radius:var(--r8);margin-bottom:12px;font-size:12px;color:#0A9B79">✓ Tu ventaja: 3 contratos previos con Chevron + empresa nacional GE + flota certificada</div>
+          <div style="display:flex;gap:8px"><button class="btn b-pr b-sm" onclick="showToast('Postulación enviada a Chevron EG ✓','')">Postular ahora</button><button class="btn b-ol b-sm">Descargar bases</button></div>
+        </div>
+        <div class="card" style="border-left:4px solid var(--gold)">
+          <div style="display:flex;gap:8px;margin-bottom:12px"><span class="tag t-bl">Suministros</span><span class="lpf">✓ Pref. GE</span><span style="margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#8B6118">87% match</span></div>
+          <h3 style="font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;margin-bottom:8px">Suministro de Equipos de Seguridad Industrial</h3>
+          <div style="display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--slate);margin-bottom:10px"><span>🏢 Chevron EG</span><span>📅 10 Jul 2025</span><span>👥 7 postulantes</span></div>
+          <div style="padding:10px 12px;background:var(--amber3);border-radius:var(--r8);margin-bottom:12px;font-size:12px;color:var(--amber)">⚠ Requiere certificación ANSI/ISEA vigente. ¿La tienes? Inclúyela para mejorar probabilidades.</div>
+          <button class="btn b-pr b-sm" onclick="showToast('Postulación enviada ✓','')">Postular ahora</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── INTEL DEL SECTOR — nuevo en v4 ── -->
+    <div id="vv-intel" class="dn">
+      <div class="ph"><div class="phl">Inteligencia Sectorial</div><div class="pht">Intel del Sector — Actualizado por NEXO Brain</div><div class="phs">Información estratégica para maximizar tus oportunidades en Guinea Ecuatorial</div></div>
+      <div class="g2" style="margin-bottom:20px">
+        <div class="card">
+          <div class="ctit">🚨 Alertas de oportunidad en tiempo real</div>
+          <div style="display:flex;flex-direction:column">
+            <div class="intel-item">
+              <div class="intel-badge" style="background:var(--red3)">🔴</div>
+              <div><div class="intel-title">Trident Energy necesita proveedores nacionales GE urgentemente — LC al 54%</div><div class="intel-meta">Hace 6 horas · Fuente: Monitor MMH</div><div class="intel-action" onclick="dSw('vendor','vv-lic',null)">Ver licitaciones de Trident →</div></div>
+            </div>
+            <div class="intel-item">
+              <div class="intel-badge" style="background:var(--amber3)">⚠️</div>
+              <div><div class="intel-title">Kosmos Energy (58% LC) buscará proveedores GE en Q3 — anticípate</div><div class="intel-meta">Ayer · Fuente: Monitor MMH</div><div class="intel-action">Seguir a Kosmos Energy →</div></div>
+            </div>
+            <div class="intel-item">
+              <div class="intel-badge" style="background:var(--gas3)">📑</div>
+              <div><div class="intel-title">Chevron EG publicará 3 nuevas licitaciones en julio — logística y suministros</div><div class="intel-meta">Hace 2 días · Fuente: Portal Licitaciones</div><div class="intel-action" onclick="dSw('vendor','vv-lic',null)">Preparar postulación →</div></div>
+            </div>
+            <div class="intel-item">
+              <div class="intel-badge" style="background:var(--blue3)">🌍</div>
+              <div><div class="intel-title">EG Ronda 2026 atraerá nuevas IOCs — oportunidades para proveedores calificados en 2026</div><div class="intel-meta">Hace 3 días · Fuente: MMH</div><div class="intel-action">Preparar perfil para nuevas IOCs →</div></div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="card" style="background:var(--ink)">
+            <div style="font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:14px">Cifras que importan para tu negocio</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+              <div><div class="mo" style="font-size:20px;font-weight:500;color:#fff">43</div><div style="font-size:11px;color:rgba(255,255,255,.4)">Licitaciones activas</div></div>
+              <div><div class="mo" style="font-size:20px;font-weight:500;color:var(--gas)">62%</div><div style="font-size:11px;color:rgba(255,255,255,.4)">LC promedio del sector</div></div>
+              <div><div class="mo" style="font-size:20px;font-weight:500;color:var(--gold)">2</div><div style="font-size:11px;color:rgba(255,255,255,.4)">IOCs bajo alerta LC</div></div>
+              <div><div class="mo" style="font-size:20px;font-weight:500;color:#fff">127</div><div style="font-size:11px;color:rgba(255,255,255,.4)">Proveedores totales</div></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="ctit">Regulación relevante para ti</div>
+            <div style="display:flex;flex-direction:column;gap:8px;font-size:13px">
+              <div style="padding:10px 12px;background:var(--mist);border-radius:var(--r8)"><div style="font-weight:600;color:var(--ink);margin-bottom:2px">Ley 8/2006 de Hidrocarburos</div><div style="font-size:11px;color:var(--slate)">Marco legal del sector. Contenido Local mínimo: 60%</div></div>
+              <div style="padding:10px 12px;background:var(--mist);border-radius:var(--r8)"><div style="font-weight:600;color:var(--ink);margin-bottom:2px">Circular MMH-2025-04 — HSE</div><div style="font-size:11px;color:var(--slate)">Nuevos requisitos HSE offshore. Vigencia: 15 May 2025</div></div>
+              <div style="padding:10px 12px;background:var(--mist);border-radius:var(--r8)"><div style="font-weight:600;color:var(--ink);margin-bottom:2px">EG Ronda 2026 — Oportunidad</div><div style="font-size:11px;color:var(--slate)">Nuevas IOCs llegarán. Prepara tu perfil para ser visible</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── INVITACIONES ── -->
+    <div id="vv-inv" class="dn">
+      <div class="ph"><div class="phl">Oportunidades</div><div class="pht">Invitaciones Directas de Operadoras</div></div>
+      <div class="card" style="border:2px solid var(--gas);margin-bottom:16px">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px"><div style="width:34px;height:34px;border-radius:var(--r8);background:var(--gas3);display:flex;align-items:center;justify-content:center;font-size:18px">📨</div><div><div style="font-weight:700;color:var(--ink)">Invitación de Chevron EG</div><div class="mo" style="font-size:11px;color:var(--slate)">Recibida hace 4 horas · Caduca en 12 días</div></div></div>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;margin-bottom:10px">Transporte de Personal — Malabo a Punta Europa</h3>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;background:var(--mist);border-radius:var(--r8);padding:12px">
+          <div><div class="mo" style="font-size:14px">$50K–70K</div><div style="font-size:10px;color:var(--slate)">Valor estimado</div></div>
+          <div><div class="mo" style="font-size:14px">05 Jul 2025</div><div style="font-size:10px;color:var(--slate)">Cierre</div></div>
+          <div><div class="mo" style="font-size:14px">12 meses</div><div style="font-size:10px;color:var(--slate)">Duración contrato</div></div>
+        </div>
+        <div style="display:flex;gap:10px"><button class="btn b-pr b-sm" onclick="showToast('Postulación enviada a Chevron ✓','')">Aceptar y postular</button><button class="btn b-ol b-sm">Ver bases</button><button class="btn b-da b-sm">Declinar</button></div>
+      </div>
+    </div>
+
+    <!-- ── CONOCER OPERADORAS ── -->
+    <div id="vv-ioc" class="dn">
+      <div class="ph"><div class="phl">Inteligencia</div><div class="pht">Conocer las Operadoras del Sector</div></div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="card" style="border-left:4px solid var(--gas)">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px"><div style="width:44px;height:44px;border-radius:var(--r12);background:#0068A5;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px">CVX</div><div><div style="font-weight:700;font-size:15px">Chevron EG</div><div style="font-size:12px;color:var(--slate)">Bloque B · Campo Alen · 4 licitaciones activas</div></div><div style="margin-left:auto;text-align:right"><div style="font-size:10px;color:var(--slate)">LC actual</div><div class="mo" style="font-size:20px;font-weight:500;color:var(--gas)">68%</div></div></div>
+          <div style="font-size:13px;color:var(--slate);line-height:1.65;margin-bottom:10px"><strong style="color:var(--ink)">Qué valora:</strong> Historial comprobable, cumplimiento HSE, disponibilidad 24/7. Fuerte preferencia por empresas nacionales GE para logística y suministros generales.</div>
+          <button class="btn b-pr b-sm" onclick="dSw('vendor','vv-lic',null)">Ver licitaciones de Chevron →</button>
+        </div>
+        <div class="card" style="border-left:4px solid var(--red)">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px"><div style="width:44px;height:44px;border-radius:var(--r12);background:#8B2020;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px">TRI</div><div><div style="font-weight:700;font-size:15px">Trident Energy EG</div><div style="font-size:12px;color:var(--slate)">Bloque EG-21 · Bajo alerta de LC (54%)</div></div><div style="margin-left:auto;text-align:right"><div style="font-size:10px;color:var(--slate)">LC actual</div><div class="mo" style="font-size:20px;font-weight:500;color:var(--red)">54%</div></div></div>
+          <div style="padding:10px 12px;background:var(--gas3);border-radius:var(--r8);margin-bottom:10px;font-size:13px;color:#0A9B79;font-weight:600">✓ Oportunidad: Trident necesita urgentemente proveedores nacionales GE. Tu probabilidad de adjudicación es alta ahora mismo.</div>
+          <button class="btn b-pr b-sm" onclick="dSw('vendor','vv-lic',null)">Ver licitaciones de Trident →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── POSTULACIONES ── -->
+    <div id="vv-bid" class="dn">
+      <div class="ph"><div class="phl">Postulaciones</div><div class="pht">Seguimiento de Mis Postulaciones</div></div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <table class="tbl"><thead><tr><th>Licitación</th><th>Operadora</th><th>Enviada</th><th>Valor</th><th>Estado</th><th></th></tr></thead><tbody>
+          <tr><td><strong>Transporte Malabo–Punta Europa</strong></td><td>Chevron EG</td><td><span class="mo" style="font-size:12px">28 May</span></td><td><span class="mo">$48,500</span></td><td><span class="tag t-bl">En evaluación</span></td><td><button class="btn b-ol b-xs">Ver</button></td></tr>
+          <tr><td><strong>Equipos de Seguridad Offshore</strong></td><td>Chevron EG</td><td><span class="mo" style="font-size:12px">02 Jun</span></td><td><span class="mo">$44,200</span></td><td><span class="tag t-am">Apertura pronto</span></td><td><button class="btn b-ol b-xs">Ver</button></td></tr>
+          <tr><td><strong>Mantenimiento Terminal GNL</strong></td><td>Noble/Eni</td><td><span class="mo" style="font-size:12px">15 Abr</span></td><td><span class="mo">$38,000</span></td><td><span class="tag t-gr">✓ Adjudicada</span></td><td><button class="btn b-ol b-xs">Contrato</button></td></tr>
+          <tr><td><strong>Logística campo Alen</strong></td><td>Chevron EG</td><td><span class="mo" style="font-size:12px">10 Mar</span></td><td><span class="mo">$55,000</span></td><td><span class="tag t-rd">No seleccionada</span></td><td><button class="btn b-ol b-xs">Feedback</button></td></tr>
+        </tbody></table>
+      </div>
+    </div>
+
+    <!-- ── MI PERFIL ── -->
+    <div id="vv-pro" class="dn">
+      <div class="ph"><div class="phl">Mi Empresa</div><div class="pht">Perfil Corporativo — Así me ven las operadoras</div></div>
+      <div class="g2">
+        <div class="card">
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px">
+            <div style="width:56px;height:56px;border-radius:var(--r16);background:var(--ink);color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;flex-shrink:0">LB</div>
+            <div><div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700">Logística Bioko S.A.</div><div style="font-size:12px;color:var(--slate)">Empresa nacional · Aprobada MMH · #REG-2024-0112</div></div>
+          </div>
+          <div style="display:flex;flex-direction:column">
+            <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border2);font-size:13px"><span style="color:var(--slate)">País</span><span style="font-weight:600">Guinea Ecuatorial 🇬🇶</span></div>
+            <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border2);font-size:13px"><span style="color:var(--slate)">Categoría</span><span style="font-weight:600">Logística y transporte</span></div>
+            <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border2);font-size:13px"><span style="color:var(--slate)">Cert. offshore</span><span style="font-weight:600">✓ API RP 17N</span></div>
+            <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border2);font-size:13px"><span style="color:var(--slate)">Flota</span><span style="font-weight:600">12 unidades certificadas</span></div>
+            <div style="display:flex;justify-content:space-between;padding:10px 0;font-size:13px"><span style="color:var(--slate)">Empleados</span><span style="font-weight:600">50–249</span></div>
+          </div>
+          <button class="btn b-pr b-sm" style="margin-top:14px;width:100%;justify-content:center" onclick="showToast('Perfil guardado ✓','')">Editar perfil corporativo</button>
+        </div>
+        <div class="card">
+          <div class="ctit">Visibilidad ante operadoras</div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;justify-content:space-between;padding:10px;background:var(--gas3);border-radius:var(--r8)"><span style="font-weight:600;font-size:13px">Chevron EG</span><span class="tag t-gr">3 contratos ✓</span></div>
+            <div style="display:flex;justify-content:space-between;padding:10px;background:var(--gas3);border-radius:var(--r8)"><span style="font-weight:600;font-size:13px">GEPetrol</span><span class="tag t-gr">Perfil visible</span></div>
+            <div style="display:flex;justify-content:space-between;padding:10px;background:var(--mist);border-radius:var(--r8)"><span style="font-weight:600;font-size:13px">Noble / Eni</span><span class="tag t-bl">1 contrato</span></div>
+            <div style="display:flex;justify-content:space-between;padding:10px;background:var(--mist);border-radius:var(--r8)"><span style="font-weight:600;font-size:13px">Trident Energy</span><span class="tag t-am">¡Oportunidad!</span></div>
+            <div style="display:flex;justify-content:space-between;padding:10px;background:var(--mist);border-radius:var(--r8)"><span style="font-weight:600;font-size:13px">Kosmos Energy</span><span class="tag t-am">¡Oportunidad!</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── EXPEDIENTE ── -->
+    <div id="vv-doc" class="dn">
+      <div class="ph-v4">
+        <div class="ph-v4-left"><div class="phl">Mi Empresa</div><div class="pht">Expediente Documental</div></div>
+        <div class="ph-v4-actions"><button class="btn b-pr b-sm" onclick="showToast('Abriendo carga de documentos...','info')">+ Subir documento</button></div>
+      </div>
+      <div class="al al-wn" style="margin-bottom:18px"><span class="al-ic">⚠</span><div>Estados financieros vencen el 30 Jun 2025. Mantener expediente completo es requisito para participar en licitaciones.</div></div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <table class="tbl"><thead><tr><th>Documento</th><th>Estado</th><th>Vencimiento</th><th>Impacto Score</th><th></th></tr></thead><tbody>
+          <tr><td>📄 Registro mercantil</td><td><span class="tag t-gr">Vigente</span></td><td><span class="mo" style="font-size:12px">Mar 2027</span></td><td><span style="font-size:12px;color:var(--gas)">+15 pts</span></td><td><button class="btn b-ol b-xs">Ver</button></td></tr>
+          <tr><td>🧾 Licencia comercial</td><td><span class="tag t-gr">Vigente</span></td><td><span class="mo" style="font-size:12px">Dic 2025</span></td><td><span style="font-size:12px;color:var(--gas)">+10 pts</span></td><td><button class="btn b-ol b-xs">Ver</button></td></tr>
+          <tr><td>🔖 Certificado NIF</td><td><span class="tag t-gr">Vigente</span></td><td><span class="mo" style="font-size:12px">Permanente</span></td><td><span style="font-size:12px;color:var(--gas)">+5 pts</span></td><td><button class="btn b-ol b-xs">Ver</button></td></tr>
+          <tr><td>🛡 Política HSE</td><td><span class="tag t-gr">Vigente</span></td><td><span class="mo" style="font-size:12px">Ene 2026</span></td><td><span style="font-size:12px;color:var(--gas)">+15 pts</span></td><td><button class="btn b-ol b-xs">Ver</button></td></tr>
+          <tr style="background:rgba(212,168,67,.05)"><td>📃 Estados financieros</td><td><span class="tag t-am">⚠ Por vencer</span></td><td><span class="mo" style="font-size:12px;color:var(--red);font-weight:600">30 Jun 2025</span></td><td><span style="font-size:12px;color:var(--amber)">+20 pts</span></td><td><button class="btn b-pr b-xs" onclick="showToast('Cargando interfaz de subida...','info')">Actualizar</button></td></tr>
+        </tbody></table>
+      </div>
+    </div>
+
+    <!-- ── MI SCORE v4 ── -->
+    <div id="vv-sco" class="dn">
+      <div class="ph"><div class="phl">Mi Empresa</div><div class="pht">Mi Score NexoEG y cómo mejorarlo</div></div>
+      <div class="g2">
+        <div class="card" style="background:var(--ink)">
+          <div style="display:flex;align-items:center;justify-content:center;gap:24px;padding:20px 0">
+            <div class="score-dial" style="width:140px;height:140px">
+              <svg class="score-svg" width="140" height="140" viewBox="0 0 140 140" style="width:140px;height:140px">
+                <circle class="score-track" cx="70" cy="70" r="52" stroke="rgba(255,255,255,.1)"/>
+                <circle class="score-fill" cx="70" cy="70" r="52" stroke="var(--gas)" style="stroke-dasharray:327;stroke-dashoffset:20"/>
+              </svg>
+              <div class="score-text"><div class="score-num" style="color:var(--gas);font-size:42px">94</div><div class="score-lbl" style="color:rgba(255,255,255,.4)">/ 100</div></div>
+            </div>
+            <div>
+              <div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:6px">Proveedor Verificado ⭐</div>
+              <div style="font-size:13px;color:rgba(255,255,255,.5);margin-bottom:14px">Top 5% del sector · 127 proveedores</div>
+              <div style="display:flex;flex-direction:column;gap:6px;font-size:12px">
+                <div style="display:flex;justify-content:space-between"><span style="color:rgba(255,255,255,.6)">Documentación completa</span><span class="mo" style="color:var(--gas)">25/25</span></div>
+                <div style="display:flex;justify-content:space-between"><span style="color:rgba(255,255,255,.6)">Historial adjudicaciones</span><span class="mo" style="color:var(--gas)">30/30</span></div>
+                <div style="display:flex;justify-content:space-between"><span style="color:rgba(255,255,255,.6)">Empresa nacional GE</span><span class="mo" style="color:var(--gas)">20/20</span></div>
+                <div style="display:flex;justify-content:space-between"><span style="color:rgba(255,255,255,.6)">Tiempo en plataforma</span><span class="mo" style="color:var(--amber)">19/25</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="card">
+            <div class="ctit">Cómo llegar a 100 puntos</div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="padding:12px;border:1px solid var(--amber3);background:var(--amber3);border-radius:var(--r8)"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px"><div style="font-size:13px;font-weight:600">Actualizar estados financieros</div><span class="mo" style="font-size:12px;color:var(--amber)">Pendiente</span></div><div style="font-size:12px;color:var(--slate)">Potencial: +6 pts → Score 100</div></div>
+              <div style="padding:12px;border:1px solid rgba(31,207,161,.2);background:var(--gas3);border-radius:var(--r8)"><div style="font-size:13px;font-weight:600;margin-bottom:3px">4º contrato adjudicado</div><div style="font-size:12px;color:var(--slate)">Potencial: +10 pts adicionales</div></div>
+              <div style="padding:12px;border:1px solid var(--border2);border-radius:var(--r8)"><div style="font-size:13px;font-weight:600;margin-bottom:3px">Añadir certificación ISO 9001</div><div style="font-size:12px;color:var(--slate)">Diferenciador · Bonus: +5 pts</div></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="ctit">Ranking sectorial</div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <div style="display:flex;justify-content:space-between;padding:8px 10px;background:var(--gas3);border-radius:var(--r8);font-weight:600"><span style="color:var(--ink)">🥇 Logística Bioko — tú</span><span class="mo" style="color:var(--gas)">94</span></div>
+              <div style="display:flex;justify-content:space-between;padding:8px 10px;border-radius:var(--r8)"><span style="color:var(--slate)">TechServ Malabo</span><span class="mo">89</span></div>
+              <div style="display:flex;justify-content:space-between;padding:8px 10px;border-radius:var(--r8)"><span style="color:var(--slate)">West Africa Drilling</span><span class="mo">87</span></div>
+              <div style="display:flex;justify-content:space-between;padding:8px 10px;border-radius:var(--r8)"><span style="color:var(--slate)">EcoConsult Cameroon</span><span class="mo">71</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div></main>
+</div>
+</div><!-- /pg-vendor -->
+
+<!-- ══ MODALS v4 ══ -->
+<div class="ov" id="ov-login" onclick="if(event.target.id==='ov-login')closeOv('ov-login')">
+  <div class="mb">
+    <button class="mcl" onclick="closeOv('ov-login')">✕</button>
+    <div class="mh"><div class="mt2">Acceso a NexoEG v4</div><div class="ms2" style="margin-bottom:0">Selecciona el tipo de organización para acceder a tu panel personalizado.</div></div>
+    <div class="mbdy" style="padding-top:18px">
+      <div class="rc" onclick="loginAs('mmh')"><div class="ri" style="background:var(--blue3)">🏛️</div><div><div class="rn">Ministerio de Minas e Hidrocarburos</div><div class="rd2">Regulador · Sector, LC, HSE, EG Ronda 2026</div></div><div class="rar">→</div></div>
+      <div class="rc" onclick="loginAs('ioc')"><div class="ri" style="background:var(--gas3)">⚙️</div><div><div class="rn">Operadora Petrolera (IOC)</div><div class="rd2">Búsqueda proveedores, comparativa, LC, licitaciones</div></div><div class="rar">→</div></div>
+      <div class="rc" onclick="loginAs('vendor')"><div class="ri" style="background:var(--gold3)">🏢</div><div><div class="rn">Empresa Proveedora de Bienes o Servicios</div><div class="rd2">Oportunidades, intel sectorial, score, postulaciones</div></div><div class="rar">→</div></div>
+      <div style="text-align:center;margin-top:16px;font-size:13px;color:var(--slate)">¿Nueva en el sector? <span class="lnk" onclick="closeOv('ov-login');openOv('ov-reg')">Solicitar registro →</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="ov" id="ov-reg" style="align-items:flex-start;overflow-y:auto;padding:24px" onclick="if(event.target.id==='ov-reg')closeOv('ov-reg')">
+  <div class="mb lg" style="margin:auto">
+    <button class="mcl" onclick="closeOv('ov-reg')">✕</button>
+    <div id="reg-form">
+      <div class="mh"><div class="mt2">Registro de Empresa Proveedora</div><div class="ms2">Inicia tu proceso de calificación ante el MMH. Acceso al portal tras aprobación (3–5 días).</div></div>
+      <div class="mbdy">
+        <div class="fg2">
+          <div class="fg"><label class="flab">Nombre de la empresa *</label><input class="fi" placeholder="Ej. Logística Bioko S.A."/></div>
+          <div class="fg"><label class="flab">País de origen *</label><input class="fi" placeholder="Guinea Ecuatorial"/></div>
+          <div class="fg"><label class="flab">Correo electrónico *</label><input class="fi" type="email" placeholder="empresa@correo.com"/></div>
+          <div class="fg"><label class="flab">Teléfono *</label><input class="fi" placeholder="+240 222 000 000"/></div>
+        </div>
+        <div class="fg"><label class="flab">Categoría principal *</label>
+          <select class="fi"><option value="">Seleccionar...</option><option>Suministros industriales</option><option>Logística y transporte</option><option>Consultoría técnica</option><option>Servicios ambientales (HSE)</option><option>Ingeniería y construcción</option><option>Tecnología e informática</option><option>Catering y servicios de campo</option><option>Servicios jurídicos y financieros</option></select>
+        </div>
+        <div class="fg"><label class="flab">¿Opera actualmente en Guinea Ecuatorial? *</label>
+          <select class="fi"><option value="">Seleccionar...</option><option>Sí, empresa registrada en GE</option><option>No, empresa extranjera interesada</option></select>
+        </div>
+        <div style="background:var(--gold3);border-radius:var(--r8);padding:12px 14px;margin-bottom:18px;font-size:13px;color:#8B6118;line-height:1.65;border:1px solid rgba(200,149,42,.2)">📋 El MMH revisará tu expediente en 3–5 días hábiles. Tendrás acceso completo tras la aprobación.</div>
+        <button class="btn b-pr" style="width:100%;justify-content:center" onclick="showRegOk()">Enviar solicitud de registro</button>
+        <div style="text-align:center;margin-top:12px;font-size:13px;color:var(--slate)">¿Ya tienes cuenta? <span class="lnk" onclick="closeOv('ov-reg');openOv('ov-login')">Iniciar sesión →</span></div>
+      </div>
+    </div>
+    <div id="reg-ok" class="dn">
+      <div style="text-align:center;padding:48px 32px">
+        <div style="width:72px;height:72px;border-radius:50%;background:var(--gas3);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:32px">✅</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;margin-bottom:10px">Solicitud enviada al MMH</div>
+        <p style="color:var(--slate);line-height:1.7;margin-bottom:22px;font-size:14px">Confirmarás por correo en 3–5 días hábiles. Tendrás acceso al portal de proveedor tras la aprobación.</p>
+        <div style="background:var(--gas3);border:1px solid rgba(31,207,161,.2);border-radius:var(--r12);padding:14px 18px;margin-bottom:24px;text-align:left">
+          <div class="mo" style="font-size:13px;font-weight:500;color:#0A9B79;margin-bottom:3px">Nº referencia: #REG-2025-0389</div>
+          <div style="font-size:12px;color:var(--slate)">Guarda este número para dar seguimiento.</div>
+        </div>
+        <button class="btn b-pr" onclick="closeOv('ov-reg')">Volver a la plataforma</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ JAVASCRIPT v4 ══ -->
+<script>
+/* ─── ROLE CONFIG ─── */
+const R = {
+  mmh:{pg:'pg-mmh',name:'Dir. Contenido Nacional',role:'Ministerio de Minas e Hidrocarburos',color:'#1D6FE8',letter:'M',
+    secs:['mm-ov','mm-charts','mm-blq','mm-lc','mm-rep','mm-dir','mm-ap','mm-hse','mm-ronda','mm-cir','mm-lic'],
+    tabs:[['Vista General','mm-ov'],['Gráficos','mm-charts'],['Por Bloque','mm-blq'],['Monitor LC','mm-lc'],['Directorio','mm-dir'],['Solicitudes','mm-ap'],['HSE','mm-hse'],['Ronda 2026','mm-ronda'],['Circulares','mm-cir'],['Reportes','mm-rep']]},
+  ioc:{pg:'pg-ioc',name:'Chevron Equatorial Guinea',role:'Operadora Petrolera · Bloque B',color:'#1FCFA1',letter:'O',
+    secs:['ii-ov','ii-dir','ii-eval','ii-prf','ii-lic','ii-bid','ii-con','ii-lc','ii-alt'],
+    tabs:[['Resumen','ii-ov'],['Buscar Proveedores','ii-dir'],['Comparar','ii-eval'],['Favoritos','ii-prf'],['Licitaciones','ii-lic'],['Postulaciones','ii-bid'],['Contratos','ii-con'],['LC','ii-lc'],['Alertas','ii-alt']]},
+  vendor:{pg:'pg-vendor',name:'Logística Bioko S.A.',role:'Proveedor Calificado MMH',color:'#C8952A',letter:'P',
+    secs:['vv-ov','vv-lic','vv-inv','vv-intel','vv-ioc','vv-bid','vv-pro','vv-doc','vv-sco'],
+    tabs:[['Oportunidades','vv-ov'],['Licitaciones','vv-lic'],['Invitaciones','vv-inv'],['Intel Sector','vv-intel'],['Operadoras','vv-ioc'],['Postulaciones','vv-bid'],['Mi Perfil','vv-pro'],['Expediente','vv-doc'],['Mi Score','vv-sco']]}
+};
+let cur = null;
+
+/* ─── PAGE SYSTEM ─── */
+function showPg(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+function goHome(){
+  cur=null;
+  document.getElementById('pnav').style.display='flex';
+  document.getElementById('dnav').classList.remove('show');
+  document.body.style.overflow='';
+  showPg('pg-home');
+  closeBrain();
+}
+
+/* ─── LOGIN ─── */
+function loginAs(role){
+  closeOv('ov-login');
+  cur=role;
+  const c=R[role];
+  const av=document.getElementById('dav');
+  av.textContent=c.letter; av.style.background=c.color;
+  document.getElementById('dun').textContent=c.name;
+  document.getElementById('dur').textContent=c.role;
+  const dt=document.getElementById('dtabs');
+  dt.innerHTML=c.tabs.map((t,i)=>
+    `<button class="dtab${i===0?' on':''}" onclick="tabClick('${role}','${t[1]}',this)">${t[0]}</button>`
+  ).join('');
+  document.getElementById('pnav').style.display='none';
+  document.getElementById('dnav').classList.add('show');
+  showPg(c.pg);
+  // Set NEXO Brain context
+  setBrainContext(role);
+  // Start KPI counters
+  setTimeout(animateCounters, 400);
+  showToast(`Bienvenido · ${c.name}`, '');
+}
+
+/* ─── SECTION SWITCH ─── */
+function showSec(role, sid){
+  R[role].secs.forEach(id=>{const e=document.getElementById(id); if(e)e.classList.add('dn')});
+  const e=document.getElementById(sid); if(e)e.classList.remove('dn');
+}
+function syncSb(role, sid){
+  document.querySelectorAll('#'+R[role].pg+' .sbi').forEach(b=>{
+    b.classList.remove('on');
+    if((b.getAttribute('onclick')||'').includes("'"+sid+"'"))b.classList.add('on');
+  });
+}
+function syncTabs(sid){
+  document.querySelectorAll('#dtabs .dtab').forEach(b=>{
+    b.classList.remove('on');
+    if((b.getAttribute('onclick')||'').includes("'"+sid+"'"))b.classList.add('on');
+  });
+}
+function dSw(role, sid, btn){
+  showSec(role, sid);
+  document.querySelectorAll('#'+R[role].pg+' .sbi').forEach(b=>b.classList.remove('on'));
+  if(btn) btn.classList.add('on');
+  else syncSb(role, sid);
+  syncTabs(sid);
+}
+function tabClick(role, sid, btn){
+  showSec(role, sid);
+  document.querySelectorAll('#dtabs .dtab').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  syncSb(role, sid);
+}
+
+/* ─── MODALS ─── */
+function openOv(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden'}
+function closeOv(id){
+  document.getElementById(id).classList.remove('open');
+  if(!document.querySelector('.ov.open'))document.body.style.overflow='';
+  if(id==='ov-reg'){
+    document.getElementById('reg-form').classList.remove('dn');
+    document.getElementById('reg-ok').classList.add('dn');
+  }
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.querySelectorAll('.ov.open').forEach(o=>closeOv(o.id));closeBrain()}});
+function showRegOk(){document.getElementById('reg-form').classList.add('dn');document.getElementById('reg-ok').classList.remove('dn')}
+
+/* ─── TABS / PILLS ─── */
+function swPill(el){el.closest('.tpb').querySelectorAll('.tpp').forEach(t=>t.classList.remove('on'));el.classList.add('on')}
+function sScr(id){const e=document.getElementById(id);if(e)e.scrollIntoView({behavior:'smooth'})}
+
+/* ─── NAV SCROLL ─── */
+window.addEventListener('scroll',()=>document.getElementById('pnav').classList.toggle('solid',window.scrollY>60));
+
+/* ─── SCROLL REVEAL ─── */
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+/* ─── TOAST SYSTEM ─── */
+function showToast(msg, type=''){
+  const tc=document.getElementById('toast-container');
+  const t=document.createElement('div');
+  t.className='toast'+(type?' '+type:'');
+  const icon = type==='warn'?'⚠':type==='err'?'✗':type==='info'?'ℹ':'✓';
+  t.innerHTML=`<span class="toast-icon">${icon}</span><span style="flex:1">${msg}</span><button class="toast-close" onclick="this.parentElement.remove()">✕</button>`;
+  tc.appendChild(t);
+  setTimeout(()=>t.remove(),4000);
+}
+
+/* ─── KPI COUNTER ANIMATION ─── */
+function animateCounters(){
+  document.querySelectorAll('.kpi-counter').forEach(el=>{
+    const target=parseInt(el.dataset.val||0);
+    const suffix=el.dataset.suffix||'';
+    const duration=1200;
+    const start=Date.now();
+    const tick=()=>{
+      const p=Math.min((Date.now()-start)/duration,1);
+      const ease=1-Math.pow(1-p,3);
+      el.textContent=Math.floor(ease*target).toLocaleString()+suffix;
+      if(p<1)requestAnimationFrame(tick);
+      else el.textContent=target.toLocaleString()+suffix;
+    };
+    tick();
+  });
+}
+
+/* ─── NEXO BRAIN ─── */
+let brainOpen=false;
+const brainCtx={
+  mmh:"Eres el asistente IA del panel del MMH. Tienes acceso a datos del sector hidrocarburos de Guinea Ecuatorial: producción 80,400 bbl/día, LC promedio 62%, 127 proveedores calificados, Trident Energy al 54% (bajo umbral 60%), Kosmos al 58%, EG Ronda 2026 con 4 bloques disponibles. Responde en español, de forma concisa y profesional.",
+  ioc:"Eres el asistente IA del panel de Chevron EG (operadora). Conoces el directorio de proveedores (Logística Bioko score 94, TechServ 89, West Africa Drilling 87), las 4 licitaciones activas de Chevron, y el LC actual del 68%. Responde en español enfocándote en proveedores, licitaciones y cumplimiento.",
+  vendor:"Eres el asistente IA del portal de Logística Bioko S.A. (proveedor calificado MMH, score 94). Conoces las 3 oportunidades activas (Chevron: transporte 94% match, equipos seguridad 87% match), la invitación directa de Chevron, y que Trident Energy necesita urgentemente proveedores nacionales GE (LC 54%). Responde en español."
+};
+function setBrainContext(role){ window.brainRole=role; }
+function toggleBrain(){
+  brainOpen=!brainOpen;
+  document.getElementById('brain-panel').classList.toggle('open',brainOpen);
+}
+function closeBrain(){ brainOpen=false; document.getElementById('brain-panel').classList.remove('open'); }
+function addMsg(text, role){
+  const msgs=document.getElementById('brain-msgs');
+  const d=document.createElement('div');
+  const isUser=role==='user';
+  const userLetter=(window.brainRole==='mmh'?'M':window.brainRole==='ioc'?'O':'P');
+  d.className='msg '+(isUser?'user':'ai');
+  d.innerHTML=`<div class="msg-avatar">${isUser?userLetter:'🧠'}</div><div><div class="msg-bubble">${text}</div><div class="msg-time">${new Date().toLocaleTimeString('es-GQ',{hour:'2-digit',minute:'2-digit'})}</div></div>`;
+  msgs.appendChild(d);
+  msgs.scrollTop=msgs.scrollHeight;
+  return d;
+}
+function addThinking(){
+  const msgs=document.getElementById('brain-msgs');
+  const d=document.createElement('div');
+  d.className='msg ai'; d.id='brain-thinking-msg';
+  d.innerHTML=`<div class="msg-avatar">🧠</div><div><div class="brain-thinking"><span></span><span></span><span></span></div></div>`;
+  msgs.appendChild(d);
+  msgs.scrollTop=msgs.scrollHeight;
+}
+function removeThinking(){ const t=document.getElementById('brain-thinking-msg'); if(t)t.remove(); }
+
+async function sendBrain(){
+  const inp=document.getElementById('brain-input');
+  const q=inp.value.trim(); if(!q)return;
+  inp.value='';
+  addMsg(q,'user');
+  document.getElementById('brain-chips').style.display='none';
+  addThinking();
+  try{
+    const role=window.brainRole||'mmh';
+    const sys=brainCtx[role]||brainCtx.mmh;
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:500,
+        system:sys,
+        messages:[{role:'user',content:q}]
+      })
+    });
+    removeThinking();
+    const data=await res.json();
+    const text=data.content?.[0]?.text||'No pude obtener respuesta. Intenta de nuevo.';
+    addMsg(text,'ai');
+  }catch(e){
+    removeThinking();
+    addMsg('No se pudo conectar con NEXO Brain en este momento. Verifica tu conexión.','ai');
+  }
+}
+function askBrain(q){
+  document.getElementById('brain-input').value=q;
+  sendBrain();
+}
+document.getElementById('brain-input')?.addEventListener('keydown',e=>{if(e.key==='Enter')sendBrain()});
+</script>
+</body>
+</html>
+
